@@ -2,17 +2,20 @@ html,body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  background-color: rgb(242, 237, 229);
+  min-height: 100%;
+  
 }
 
 
 .Register{
     display: flex;
-    flex-direction: row; /* Aligns items side-by-side */
-    height: 100vh;       /* Full vertical height */
+    flex-direction: row; 
+    min-height: 100vh;     
     width: 100vw;
-    align-items: flex-start; /* Forces all children to align perfectly to the left edge */
+    align-items: stretch; 
     text-align: left;
+    background-color: rgb(242, 237, 229);;
     
 }
 
@@ -30,6 +33,9 @@ html,body {
 }
 .Teacher_logo{
     color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 400;
 }
 
 
@@ -56,12 +62,13 @@ html,body {
     padding-left: 20px;
     width: 100%;
     min-height: 100vh;
+    padding-left: 100px;
 }
 
 
 .Teacher_shelf,.Register_section{
   width: 100%;
-  flex: 1;             /* Distributes equal 50/50 space */
+  flex: 1;     
   padding: 20px;
   display: block;
 }
@@ -70,7 +77,10 @@ html,body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-left: 70px;
+  background-color: rgb(242, 237, 229);
+  min-height: 100vh;
+
+  margin-left: 40px;
 }
 
 
@@ -92,10 +102,13 @@ html,body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    margin-top: -10px;
 }
 
 .teacher-info h2{
     color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
 }
 .section-teacher p{
     color: white;
@@ -108,7 +121,7 @@ html,body {
 }
 
 .footer-class{
-    margin-top: 100px;
+    margin-top: 250px;
     color: #c7b19d;
     
 }
@@ -126,7 +139,7 @@ html,body {
    border-radius: 50%;
 
    margin-left: 10px;
-   margin-top: 10px;
+   margin-top: 20px;
 }
 
 .form-group{
@@ -136,4 +149,64 @@ html,body {
     margin-bottom: 24px;
 }
 
+.input-box{
+  width: 350px;      
+  padding: 12px 30px;       
+  box-sizing: border-box;
+  background-color:rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: 1px solid #2B1B14;
+}
 
+.button_register_details{
+  width: 350px;      
+  padding: 12px 30px;       
+  box-sizing: border-box;
+  background-color: #793e1d;
+  border:none;
+  border-radius: 5px;
+  color: white;
+}
+
+
+.sign_link{
+    margin-left: 65px;
+}
+
+.subject_name{
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border:1px solid  #a07272a1;;
+    border-radius: 10px;
+    color: #a07272a1;
+}
+
+.label-input{
+    color: black;
+}
+
+.checkbox-input{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.Login-Link{
+    color:#793e1d;
+}
+
+.subject_name:hover{
+    border: 1px solid rgba(22, 19, 19, 0.733) ;
+    color: rgba(22, 19, 19, 0.733) ;
+}
+
+.button_register_details:hover{
+    background-color: #a55e35;
+}
+
+.already-sign{
+    font-size: 15px;
+}

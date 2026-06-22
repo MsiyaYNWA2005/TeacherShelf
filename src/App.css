@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+}
+
 
 .Navigation{
   display: flex;
@@ -5,11 +15,19 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem 2.5rem;
+  position:fixed;
   top:0;
+  left: 0;
   background-color: rgb(242, 237, 229);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(177, 168, 168);
   text-decoration: none;
   width: 100%;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.page-content {
+  padding-top: 80px;
 }
 
 .TeacherShelf_Logo{
@@ -77,6 +95,18 @@
   color: #b88364;
 }
 
+.Moderation_Link button{
+  border: none;
+  color: #b88364;
+  background-color: rgb(242, 237, 229);
+}
+
+.Discovery_Link button{
+  border: none;
+  color: #b88364;
+  background-color: rgb(242, 237, 229);
+}
+
 .PostBook_Link{
   list-style:none;
   text-decoration: none;
@@ -86,7 +116,8 @@
 
 
 
-.PostBook_Link button{
+.PostBook_Link button
+{
   padding-bottom: 8px;
   padding-top: 8px;
   background-color: #9b4723;
@@ -96,5 +127,28 @@
   border-radius: 6px;
   margin-left: 10px;
   border: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
 
+.Discovery_Link button,
+.Moderation_Link button
+{
+  padding: 8px 25px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+
+.Discovery_Link button:hover,
+.Moderation_Link button:hover {
+  background-color: #E8E1D3;
+  color: black;
+}
+
+.PostBook_Link button:hover{
+ background-color:  #ca6e47;
 }

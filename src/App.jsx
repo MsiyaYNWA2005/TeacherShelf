@@ -23,9 +23,9 @@ function App() {
              </section>
               
                 <section className="Navigation_Link">
-                    <Link className="Discovery_Link"  to="/">Discovery</Link>
+                    <Link className="Discovery_Link"  to="/"><button>Discovery</button></Link>
                     <Link className="Register_Link"  to="/Register">Register</Link>
-                    <Link className="Moderation_Link"  to="/Moderation">Moderation</Link>
+                    <Link className="Moderation_Link"  to="/Moderation"><button>Moderation</button></Link>
                     <Link className="PostBook_Link"  to="/PostBook"> <button>+ Share a Book</button></Link>
                 </section>
                 
@@ -33,12 +33,14 @@ function App() {
 
 
 
-            <Routes>
+            <section className="page-content">
+                <Routes>
                 <Route path="/" element={<Discovery />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Moderation" element={<Moderation />} />
                 <Route path="/PostBook" element={<PostBook />} />
             </Routes>
+            </section>
         </BrowserRouter>
 
 

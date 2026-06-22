@@ -3,9 +3,7 @@ import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Register(){
-    return(
-        <>
-        <body> 
+    return( 
             <section className="Register" >
                 <section className="Teacher_shelf">
                 
@@ -74,7 +72,8 @@ function Register(){
                     
                     <form className="form-section">
                     <section className="form-group">
-                        <label>
+                        <label
+                        className="label-input">
                         Full name
                         </label>
                         <input 
@@ -87,7 +86,8 @@ function Register(){
                     
 
                     <section className="form-group">
-                        <label>
+                        <label
+                         className="label-input">
                         Email
                         </label>
                         <input type="text"
@@ -98,7 +98,9 @@ function Register(){
 
 
                         <section className="form-group">
-                        <label>
+                        <label
+                        
+                        className="label-input">
                         School name
                          </label>
                         <input type="text"
@@ -128,17 +130,17 @@ function Register(){
                     <h2>Grade levels you teach</h2>
 
                         
-                    <input type="checkbox" id="grade_10" name="grade_10" value="Grade 10"/>
-                    <label for="grade_10">Grade 10</label>
+                    <input type="checkbox" id="grade_10" name="grade_10" value="Grade 10"   className="checkbox-input"  />
+                    <label htmlFor="grade_10"  className="label-input" >Grade 10</label>
 
 
-                    <input type="checkbox" id="grade_11" name="grade_11" value="Grade 11"/>
-                    <label for="grade_11">Grade 11</label>
+                    <input type="checkbox" id="grade_11" name="grade_11" value="Grade 11" className="checkbox-input"/>
+                    <label htmlFor="grade_11"  className="label-input" >Grade 11</label>
 
 
 
-                    <input type="checkbox" id="grade_12" name="grade_12" value="Grade 12"/>
-                    <label for="grade_12">Grade 12</label>
+                    <input type="checkbox" id="grade_12" name="grade_12" value="Grade 12"   className="checkbox-input"   />
+                    <label htmlFor="grade_12"  className="label-input" >Grade 12</label>
 
                         
 
@@ -149,7 +151,8 @@ function Register(){
                     <form className="form-section">
 
                     <section className="form-group">
-                            <label>
+                            <label 
+                             className="label-input">
                                 Password
                             </label>
                              <input type="text" placeholder="Atleast 8 Characters"
@@ -159,7 +162,8 @@ function Register(){
 
 
                     <section className="form-group">
-                            <label>Confirm password</label>
+                            <label
+                            className="label-input">Confirm password</label>
                              <input type="text"  placeholder="Atleast 8 Characters"
                               className="input-box" />
                     </section>
@@ -169,20 +173,16 @@ function Register(){
                         
                     
 
-                    <button type="button" id="submit_details" class="button_register_details">
+                    <button type="button" id="submit_details" className="button_register_details">
                             Create my profile
                     </button>
                       
-                     <p>Already registered?  <Link to="/Login">Sign in</Link></p>
+                    <section className="sign_link"><p className="already-sign">Already registered?  <Link to="/Login" className="Login-Link">Sign in</Link></p></section>
                     </section>
 
 
                    
          </section>
-
-        </body>
-       
-            </>
     )
 }
 
