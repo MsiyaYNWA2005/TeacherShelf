@@ -1,31 +1,100 @@
 
 .Navigation{
-  display : flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1rem 2.5rem;
+  top:0;
+  background-color: rgb(242, 237, 229);
+  border-bottom: 1px solid black;
+  text-decoration: none;
+  width: 100%;
+}
+
+.TeacherShelf_Logo{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .Logo{
   list-style: none;
-  margin-top: 100px;
+  color: black;
   margin-right: 20px;
+  margin-left: 10px;
+  text-decoration: none;
 
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #2B1B14;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  background: #8B4A24;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 10px;
 }
 
 .Discovery_Link{
-  list-style: none;
+   list-style: none;
+   text-decoration: none;
+   color: #b88364;
 }
 
 .Register_Link{
   list-style:none;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  color:black;
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #E8E1D3;
+  border-radius: 5px;
 }
 
 .Moderation_Link{
- list-style: none;
+  list-style: none;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #b88364;
 }
 
 .PostBook_Link{
   list-style:none;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
+.PostBook_Link button{
+  padding-bottom: 8px;
+  padding-top: 8px;
+  background-color: #9b4723;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  border-radius: 6px;
+  margin-left: 10px;
+  border: none;
+
 }

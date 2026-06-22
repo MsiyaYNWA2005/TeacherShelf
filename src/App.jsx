@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BookOpen } from "lucide-react";
+import "./App.css"
 
 import Discovery from "./pages/Discovery.jsx";
 import Register from "./pages/Register.jsx";
@@ -13,11 +15,17 @@ function App() {
 
 
             <nav className="Navigation">
+             <section className="TeacherShelf_Logo">
+                <div className="logo-icon">
+                    <BookOpen size={20} />
+                </div>
                 <Link className="Logo">TeacherShelf</Link>
+             </section>
+              
                 <section className="Navigation_Link">
-                    <Link className="Discovery_Link"  to="/"><button>Discovery</button></Link>
-                    <Link className="Register_Link"  to="/Register"><button>Register</button></Link>
-                    <Link className="Moderation_Link"  to="/Moderation"><button>Moderation</button></Link>
+                    <Link className="Discovery_Link"  to="/">Discovery</Link>
+                    <Link className="Register_Link"  to="/Register">Register</Link>
+                    <Link className="Moderation_Link"  to="/Moderation">Moderation</Link>
                     <Link className="PostBook_Link"  to="/PostBook"> <button>+ Share a Book</button></Link>
                 </section>
                 
