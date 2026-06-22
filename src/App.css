@@ -1,0 +1,31 @@
+
+.Navigation{
+  display : flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 2.5rem;
+}
+
+.Logo{
+  list-style: none;
+  margin-top: 100px;
+  margin-right: 20px;
+
+}
+
+.Discovery_Link{
+  list-style: none;
+}
+
+.Register_Link{
+  list-style:none;
+}
+
+.Moderation_Link{
+ list-style: none;
+}
+
+.PostBook_Link{
+  list-style:none;
+}
