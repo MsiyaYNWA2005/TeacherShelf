@@ -1,8 +1,14 @@
 import "../cssfiles/Register.css"
 import { BookOpen } from "lucide-react";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Register(){
+
+
+    const [showPassword, setShowPassword] = useState(false);
+
     return( 
             <section className="Register" >
                 <section className="Teacher_shelf">
@@ -155,8 +161,22 @@ function Register(){
                              className="label-input">
                                 Password
                             </label>
-                             <input type="text" placeholder="Atleast 8 Characters"
-                            className="input-box" />
+
+                            <section className="password-class">
+                                 <input type={showPassword ? "text": "password"} 
+                                 placeholder="Atleast 8 Characters"
+                                className="input-box" />
+
+                                <button
+                                type="button"
+                                onClick={() =>setShowPassword(!showPassword)}
+                                className="show-password">
+
+                                {showPassword ? <EyeOff size={18}/> : <Eye size={18}/>}
+                                    
+                                </button>
+                            </section>
+                            
                     </section>
                             
 
@@ -164,8 +184,20 @@ function Register(){
                     <section className="form-group">
                             <label
                             className="label-input">Confirm password</label>
-                             <input type="text"  placeholder="Atleast 8 Characters"
-                              className="input-box" />
+                            <section className="password-class">
+                                 <input type={showPassword ? "text": "password"} 
+                                 placeholder="Atleast 8 Characters"
+                                className="input-box" />
+
+                                <button
+                                type="button"
+                                onClick={() =>setShowPassword(!showPassword)}
+                                className="show-password">
+
+                                {showPassword ? <EyeOff size={18}/> : <Eye size={18}/>}
+                                    
+                                </button>
+                            </section>
                     </section>
                         
                     </form>
