@@ -65,6 +65,13 @@ html,body {
     padding-left: 100px;
 }
 
+.grades{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin-top: 10px;
+}
+
 
 .Teacher_shelf,.Register_section{
   width: 100%;
@@ -191,9 +198,53 @@ html,body {
 }
 
 .checkbox-input{
-    margin-left: 10px;
-    margin-right: 10px;
+   appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(41, 38, 38);
+  border-radius: 2px; /* small radius = square-ish, 0 = perfectly sharp */
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
+
+.checkbox-input:checked{
+    background-color: #8B4A24;
+    border-color: rgb(41, 38, 38);
+}
+
+
+.radio-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-label{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.radio-box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #8B4A24;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-hidden:checked ~ .radio-box {
+  background-color: #8B4A24;
+}
+
+
 .Login-Link{
     color:#793e1d;
 }
@@ -220,6 +271,7 @@ html,body {
 
 .password-class {
   position: relative;
+  width: 350px; 
 }
 .show-password{
   position: absolute;
@@ -229,4 +281,8 @@ html,body {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.subjects h2 , .grade-levels h2{
+    font-size: 15px;
 }

@@ -3,13 +3,50 @@ import { BookOpen } from "lucide-react";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Check } from "lucide-react";
+
+
+
+
+function GradeRadio({id,name ,value,checked,onChange}){
+        return(
+            <label className="radio-label" htmlFor={id}>
+                   <input
+                    type="radio"
+                    id={id} 
+                    name={name} 
+                    value={value}  
+                    className="radio-hidden"
+                    checked={checked}
+                    onChange={onChange}
+                   />
+                <span className="radio-box">
+                {checked && <Check size={14} color="white" />}
+
+                </span>
+                {value}
+            </label>
+        );
+}
 
 function Register(){
 
 
     const [showPassword, setShowPassword] = useState(false);
+    const [selectedGrade,setSelectedGrade] = useState(null);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+
+     
+
+
+  
+    console.log(selectedGrade);
     return( 
+        
+
+
+
             <section className="Register" >
                 <section className="Teacher_shelf">
                 
@@ -120,7 +157,7 @@ function Register(){
 
 
                         <section className="subjects">
-                        <h2>Subjects you teach</h2>
+                        <h2><label className="label-input">Subjects you teach</label></h2>
                         <button className="subject_name">Mathematics</button>
                         <button className="subject_name">Physical Sciences</button>
                         <button className="subject_name">Accounting</button>
@@ -133,21 +170,22 @@ function Register(){
                         </section>
 
                     <section className="grade-levels">
-                    <h2>Grade levels you teach</h2>
+
+
+                    <section><h2><label className="label-input">Grade levels you teach</label></h2></section>
+                   
 
                         
-                    <input type="checkbox" id="grade_10" name="grade_10" value="Grade 10"   className="checkbox-input"  />
-                    <label htmlFor="grade_10"  className="label-input" >Grade 10</label>
+                   <section className="grades">
+                    <GradeRadio id="grade_10" name="grade_level" value="Grade 10"   checked={selectedGrade === "Grade 10" } onChange={() => setSelectedGrade("Grade 10")}/>
+                    
+                    <GradeRadio id="grade_11" name="grade_level" value="Grade 11"   checked={selectedGrade === "Grade 11"} onChange={() => setSelectedGrade("Grade 11")}/>
+                  
+                    <GradeRadio id="grade_12" name="grade_level" value="Grade 12"   checked={selectedGrade === "Grade 12"} onChange={() => setSelectedGrade("Grade 12")}/>
+                    
+                    
 
-
-                    <input type="checkbox" id="grade_11" name="grade_11" value="Grade 11" className="checkbox-input"/>
-                    <label htmlFor="grade_11"  className="label-input" >Grade 11</label>
-
-
-
-                    <input type="checkbox" id="grade_12" name="grade_12" value="Grade 12"   className="checkbox-input"   />
-                    <label htmlFor="grade_12"  className="label-input" >Grade 12</label>
-
+                   </section>
                         
 
 
@@ -185,16 +223,16 @@ function Register(){
                             <label
                             className="label-input">Confirm password</label>
                             <section className="password-class">
-                                 <input type={showPassword ? "text": "password"} 
+                                 <input type={showConfirmPassword ? "text": "password"} 
                                  placeholder="Atleast 8 Characters"
                                 className="input-box" />
 
                                 <button
                                 type="button"
-                                onClick={() =>setShowPassword(!showPassword)}
+                                onClick={() =>setShowConfirmPassword(!showConfirmPassword)}
                                 className="show-password">
 
-                                {showPassword ? <EyeOff size={18}/> : <Eye size={18}/>}
+                                {showConfirmPassword ? <EyeOff size={18}/> : <Eye size={18}/>}
                                     
                                 </button>
                             </section>
