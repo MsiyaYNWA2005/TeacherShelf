@@ -42,6 +42,9 @@ function AddSubjects({value,onClick,className}){
     )
 }
 
+
+
+
 function Register(){
 
 
@@ -227,13 +230,7 @@ async function addTeacher(){
                         <AddSubjects className="subject_name" value="Agriculture" onClick={() =>Add_Subject("Agriculture")}/>
                         <AddSubjects className="subject_name" value="Business studies"  onClick={() =>Add_Subject("Business studies")}/>
                         <AddSubjects className="subject_name" value="Economics"  onClick={() =>Add_Subject("Economics")}/>
-                        {/* <button className="subject_name">Accounting</button>
-                        <button className="subject_name">Life Sciences (Biology)</button>
-                        <button className="subject_name">Geography</button>
-                        <button className="subject_name">History</button>
-                        <button className="subject_name">Agriculture</button>
-                        <button className="subject_name">Business studies</button>
-                        <button className="subject_name">Economics</button> */}
+                      
                         </section>
 
                     <section className="grade-levels">
