@@ -10,6 +10,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 
 
+
 function GradeRadio({id,name ,value,checked,onChange}){
         return(
             <label className="radio-label" htmlFor={id}>
@@ -31,6 +32,16 @@ function GradeRadio({id,name ,value,checked,onChange}){
         );
 }
 
+
+function AddSubjects({value,onClick,className}){
+    return(
+       <button type="button" 
+       className={className} 
+       onClick={onClick}>
+       {value}</button>
+    )
+}
+
 function Register(){
 
 
@@ -42,8 +53,19 @@ function Register(){
     const [Email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const[Confirm_password,setConfirmPassword] = useState("");
+    const [selectedSubject, setSelectedSubject] = useState([]);
 
-    
+
+function Add_Subject(subject){
+    if(selectedSubject.includes(subject)){
+        setSelectedSubject(selectedSubject.filter((s)  => s !==subject));
+    }
+    else{
+        setSelectedSubject([...selectedSubject,subject]);
+    }
+}
+
+
 async function addTeacher(){
     if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""){
         try{
@@ -53,10 +75,15 @@ async function addTeacher(){
                     school: SchoolName,
                     email:Email,
                     grade: selectedGrade,
+                    subjects:selectedSubject,
                     createdAt: new Date(),
                 });
+            alert("Student saved successfully!");
             }
-        alert("Student saved successfully!");
+            else{
+                alert("Failed to save teacher. Check Password and Confirmation Password");
+            }
+        
         }
         catch(error){
             console.error("Error saving Teacher :", error);
@@ -70,9 +97,6 @@ async function addTeacher(){
      
     return( 
         
-
-
-
             <section className="Register" >
                 <section className="Teacher_shelf">
                 
@@ -193,16 +217,23 @@ async function addTeacher(){
                         
                         <section className="subjects">
                         <h2><label className="label-input">Subjects you teach</label></h2>
-                        <button
-                        className="subject_name">Mathematics</button>
-                        <button className="subject_name">Physical Sciences</button>
-                        <button className="subject_name">Accounting</button>
+                        
+                        <AddSubjects className="subject_name" value="Mathematics"  onClick={() => Add_Subject("Mathematics")}/>
+                        <AddSubjects className="subject_name" value="Physical Science"  onClick={() =>Add_Subject("Physical Science")}/>
+                        <AddSubjects className="subject_name" value="Accounting"  onClick={() =>Add_Subject("Accounting")}/>
+                        <AddSubjects className="subject_name" value="Life Sciences (Biology)"  onClick={() =>Add_Subject("Life Sciences (Biology)")}/>
+                        <AddSubjects className="subject_name" value="Geography" onClick={() =>Add_Subject("Geography")}/>
+                        <AddSubjects className="subject_name" value="History" onClick={() =>Add_Subject("History")}/>
+                        <AddSubjects className="subject_name" value="Agriculture" onClick={() =>Add_Subject("Agriculture")}/>
+                        <AddSubjects className="subject_name" value="Business studies"  onClick={() =>Add_Subject("Business studies")}/>
+                        <AddSubjects className="subject_name" value="Economics"  onClick={() =>Add_Subject("Economics")}/>
+                        {/* <button className="subject_name">Accounting</button>
                         <button className="subject_name">Life Sciences (Biology)</button>
-                        <button className="subject_name">Geography </button>
+                        <button className="subject_name">Geography</button>
                         <button className="subject_name">History</button>
                         <button className="subject_name">Agriculture</button>
                         <button className="subject_name">Business studies</button>
-                        <button className="subject_name">Economics</button>
+                        <button className="subject_name">Economics</button> */}
                         </section>
 
                     <section className="grade-levels">
