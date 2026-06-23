@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
+import { db } from "../firebaseConnSetUp";
+import { collection, addDoc } from "firebase/firestore";
 
 
 
@@ -35,13 +37,37 @@ function Register(){
     const [showPassword, setShowPassword] = useState(false);
     const [selectedGrade,setSelectedGrade] = useState(null);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [FullName ,setFullName ]=useState("");
+    const [SchoolName,setSchoolName]=useState("");
+    const [Email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
+    const[Confirm_password,setConfirmPassword] = useState("");
 
+    
+async function addTeacher(){
+    if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""){
+        try{
+            if(Confirm_password === password){
+                await addDoc(collection(db,"teachers"),{
+                    name: FullName,
+                    school: SchoolName,
+                    email:Email,
+                    grade: selectedGrade,
+                    createdAt: new Date(),
+                });
+            }
+        alert("Student saved successfully!");
+        }
+        catch(error){
+            console.error("Error saving Teacher :", error);
+            alert("Failed to save teacher. Check the console.");
+        }
+        
 
+    }
+
+}
      
-
-
-  
-    console.log(selectedGrade);
     return( 
         
 
@@ -119,24 +145,30 @@ function Register(){
                         className="label-input">
                         Full name
                         </label>
-                        <input 
+                        <input
+                        value={FullName}
                         type="text"
                         placeholder="Ms. Jane Smith"
                         className="input-box"
+                        onChange={(e) =>setFullName(e.target.value)}
                         />
-                        
+                    
                     </section>
                     
 
                     <section className="form-group">
                         <label
                          className="label-input">
-                        Email
+                        
                         </label>
                         <input type="text"
+                        value={Email}
+                        onChange={(e) =>setEmail(e.target.value)}
                         placeholder="janesmith@gmail.com"
                         className="input-box" />
-                        
+
+
+                         
                     </section>
 
 
@@ -147,18 +179,22 @@ function Register(){
                         School name
                          </label>
                         <input type="text"
+                        value={SchoolName}
+                        onChange={(e) =>setSchoolName(e.target.value)}
                         placeholder="WestBrook High School"
                         className="input-box" />
                        
                         </section>
                         
+                        
                     </form>
 
 
-
+                        
                         <section className="subjects">
                         <h2><label className="label-input">Subjects you teach</label></h2>
-                        <button className="subject_name">Mathematics</button>
+                        <button
+                        className="subject_name">Mathematics</button>
                         <button className="subject_name">Physical Sciences</button>
                         <button className="subject_name">Accounting</button>
                         <button className="subject_name">Life Sciences (Biology)</button>
@@ -199,10 +235,14 @@ function Register(){
                              className="label-input">
                                 Password
                             </label>
+                             
+
 
                             <section className="password-class">
-                                 <input type={showPassword ? "text": "password"} 
+                                 <input type={showPassword ? "text": "password"}
+                                 value={password}
                                  placeholder="Atleast 8 Characters"
+                                 onChange={(e) =>setPassword(e.target.value)}
                                 className="input-box" />
 
                                 <button
@@ -223,8 +263,10 @@ function Register(){
                             <label
                             className="label-input">Confirm password</label>
                             <section className="password-class">
-                                 <input type={showConfirmPassword ? "text": "password"} 
+                                 <input type={showConfirmPassword ? "text": "password"}
+                                 value={Confirm_password} 
                                  placeholder="Atleast 8 Characters"
+                                 onChange={(e) =>setConfirmPassword(e.target.value)}
                                 className="input-box" />
 
                                 <button
@@ -243,7 +285,7 @@ function Register(){
                         
                     
 
-                    <button type="button" id="submit_details" className="button_register_details">
+                    <button type="button"  onClick={addTeacher}  id="submit_details" className="button_register_details">
                             Create my profile
                     </button>
                       

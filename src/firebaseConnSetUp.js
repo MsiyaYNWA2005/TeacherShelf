@@ -1,18 +1,17 @@
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBfjWf3PCNXGUJYrSBIstK2ywWbRqMyxsM",
-  authDomain: "teachershelf-5ec05.firebaseapp.com",
-  projectId: "teachershelf-5ec05",
-  storageBucket: "teachershelf-5ec05.firebasestorage.app",
-  messagingSenderId: "695620269200",
-  appId: "1:695620269200:web:c64b179f4deabff54d1415",
-  measurementId: "G-R0YEX9D3WC"
+  apiKey: "AIzaSyBVlbrx6MWWrz7MRIiivexubDBUDvfKsbE",
+  authDomain: "todoapp-3026d.firebaseapp.com",
+  projectId: "todoapp-3026d",
+  storageBucket: "todoapp-3026d.firebasestorage.app",
+  messagingSenderId: "942401549628",
+  appId: "1:942401549628:web:a349aeec2e0623a2efda39",
+  measurementId: "G-VLW0WPP1X4"
 };
-
 
 const app = initializeApp(firebaseConfig);
 
