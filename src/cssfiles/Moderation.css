@@ -5,7 +5,7 @@ html,body{
 
 .Moderation-main-section{
     display: flex;
-    flex-direction: row; 
+    flex-direction: column; 
     min-height: 100vh;     
     width: 100vw; 
     background-color: rgb(242, 237, 229);
@@ -50,6 +50,61 @@ html,body{
     padding-top: 10px;
     border-radius: 5px;
     color: white;
+    margin-top: 5px;
 }
 
 
+.cards-states-section{
+    display: flex;
+    flex-direction: row;
+    gap:15px;
+    margin-top: 50px;
+    width: 70%;
+}
+
+.cards-states-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 50px;
+  width: 70%;
+}
+
+.pending-card,
+.approved-card,
+.rejected-card {
+  flex: 1;
+  padding: 16px 20px;
+  text-align: left;
+  border-radius: 3px;
+}
+
+.pending-card {
+  background-color: #F5E6C8;
+  border: 2px solid #BA7517;
+}
+
+.pending-h2-p,
+.pending-h2-p h2 {
+  color: #8B5A0E;
+}
+
+.approved-card {
+  background-color: #DCEBD3;
+  border: 2px solid #4C8C3D;
+}
+
+.approved-h2-p,
+.approved-h2-p h2 {
+  color: #2E5E22;
+}
+
+.rejected-card {
+  background-color: #F6DAD5;
+  border: 2px solid #C0392B;
+}
+
+.rejected-h2-p,
+.rejected-h2-p h2 {
+  color: #8B2A1E;
+}

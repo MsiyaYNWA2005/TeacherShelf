@@ -23,6 +23,29 @@ function Moderation(){
 
         </section>
 
+        <section className="cards-states-section">
+            <section className="pending-card">
+
+              <section className="pending-h2-p">
+                <h2>N0.</h2>
+                <p>Pending</p>
+                 </section>
+               
+            </section>
+            <section className="approved-card">
+               <section className="approved-h2-p">
+                 <h2>N0.</h2>
+                <p>Approved</p>
+               </section>
+            </section>
+            <section className="rejected-card">
+                <section className="rejected-h2-p">
+                    <h2>N0.</h2>
+                    <p>Rejected</p>
+                </section>
+            </section>
+        </section>
+
        </section>
     )
 }
