@@ -64,13 +64,13 @@ html,body {
   width: 350px;      
   padding: 12px 30px;       
   box-sizing: border-box;
-  background-color:rgba(255, 255, 255, 0.06);
   border-radius: 5px;
+  background-color: rgb(221, 211, 194);
   border: 1px solid #2B1B14;
 }
 
 .subjects_and_grades_options{
-    background-color: rgb(242, 237, 229);
+    background-color: rgb(221, 211, 194);
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 12px;
@@ -96,11 +96,12 @@ html,body {
 .input-recommend{
     margin-top: 15px;
     margin-bottom: 15px;
-    padding-right: 170px;
+    padding-right: 190px;
     padding-bottom: 50px;
+    padding-left: 5px;
     outline: none;
     border: 1px solid #2B1B14;
-    background-color: rgb(242, 237, 229);
+    background-color: rgb(221, 211, 194);
 }
 
 .input-recommend:focus{
@@ -113,15 +114,18 @@ html,body {
     display: flex;
     flex-direction: column;
     gap:10px;
+    
+    
 }
 
 .input-recommend-photo{
   width: 350px;      
   padding: 12px 30px;       
   box-sizing: border-box;
-  background-color:rgba(255, 255, 255, 0.06);
+  background-color: rgb(221, 211, 194);
   border-radius: 5px;
   border: 1px solid #2B1B14;
+  outline: none;
 }
 
 

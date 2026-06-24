@@ -120,7 +120,7 @@ html, body, #root {
 {
   padding-bottom: 8px;
   padding-top: 8px;
-  background-color: #9b4723;
+  background-color: #8f4220;
   padding-left: 25px;
   padding-right: 25px;
   color: white;
@@ -150,5 +150,5 @@ html, body, #root {
 }
 
 .PostBook_Link button:hover{
- background-color:  #ca6e47;
+ background-color:  #664030;
 }

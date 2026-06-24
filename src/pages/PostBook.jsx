@@ -3,7 +3,7 @@ import { db } from "../firebaseConnSetUp";
 import { collection, addDoc } from "firebase/firestore";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 
 
 
@@ -17,26 +17,44 @@ function PostBook(){
     const [recommend_text,setrecommend_text]  = useState("");
     const [subject,setSubject] = useState("");
     const [grade,setGrade] = useState("");
+    // const [formData, setFormData] = useState({
+    //  BookTitle
+    // })
 
 
     async function PostBook_Teacher(){
+        if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
             try{
-                await addDoc(collection(db,"books"),{
+                await addDoc(collection(db ,"books"),{
                     bookTitle:BookTitle,
                     authorName:AuthorName,
                     subject_teach:subject,
                     grade_teach:grade,
                     book_recommend:recommend_text,
                     photo_url:photoUrl_Google,
-                });
-                
+                })
+            alert("book saved successfully!");
             }
             catch(error){
                 console.error("Error saving Book :", error);
                 alert("Failed to save book. Check the console.");
-            
+            }
         }
     }
+
+    
+
+    // const handleSubmit = (e) => {
+    // e.preventDefault()
+    // console.log('Submitted:', formData)
+
+    // // Reset form
+    // setFormData({
+    //     BookTitle:''
+    // })
+    // }
+
+
 
 
     return (
@@ -47,7 +65,7 @@ function PostBook(){
                     <p>Your post will be reviewed by a moderator before going live</p>
                 </section>
                 <section>
-                    <form className="form-section">
+                    <form      className="form-section">
 
                      <section className="form-group">
                         <label
@@ -124,20 +142,19 @@ function PostBook(){
                             placeholder="Describe why this book work in your classroom.What do students take away from it"
                             className="input-recommend"
                             onChange={(e)=>setrecommend_text(e.target.value)}
-                            rows={4}
                         />
                     </section>
 
 
                      <section className="photo-input">
-                        <label className="label-input">Book photo (optional)</label>
+                        <section className="recommend" ><label className="label-input">Book photo</label> <span>(optional)</span></section>
                         <input 
                             type="url"
                             value={photoUrl_Google}
                             id="photoUrl_"
                             placeholder="Paste an image Link(e.g from Google Boook)"
                             className="input-recommend-photo"
-                             onChange={(e)=>setphotoUrl_Google(e.target.value)}
+                            onChange={(e)=>setphotoUrl_Google(e.target.value)}
                         />
                     </section>
 
