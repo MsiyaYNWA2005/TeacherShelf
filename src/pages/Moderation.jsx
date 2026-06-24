@@ -21,7 +21,7 @@ function Moderation(){
         async function GetBooksPending(){
 
             const q = query(collection(db,"books"),
-                    where("status" ,"==","pending")
+                    where("status","==","pending")
 
                 );
             const snapshots = await getDocs(q);
@@ -36,7 +36,7 @@ function Moderation(){
         async function GetBooksApproved(){
 
         const q = query(collection(db,"books"),
-                where("status" ,"==","pending")
+                where("status" ,"==","approved")
 
             );
         const snapshots = await getDocs(q);
