@@ -7,6 +7,33 @@ import { Link } from "react-router-dom";
 
 
 function PostBook(){
+
+    const [photoUrl,setphotoUrl] = useState("");
+    const [BookTitle,setBookTitle] = useState("");
+    const [AuthorName,setAuthorName] = useState("");
+    const [photoUrl_Google,setphotoUrl_Google]  = useState("");
+    const [recommend_text,setrecommend_text]  = useState("");
+
+
+    async function PostBook_Teacher(){
+        if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
+            try{
+                await addDoc(collection(db ,"books"),{
+                    bookTitle:BookTitle,
+                    authorName:AuthorName,
+                    book_recommend:recommend_text,
+                    photo_url:photoUrl_Google,
+                })
+                
+            }
+            catch(error){
+                console.error("Error saving Book :", error);
+                alert("Failed to save book. Check the console.");
+            }
+        }
+    }
+
+
     return (
         <section className="post-book-main-section">
             <section className="post-section">
@@ -23,11 +50,11 @@ function PostBook(){
                         Book title
                         </label>
                         <input
-                        // value={}
+                        value={BookTitle}
                         type="text"
                         placeholder="e.g To Kill a MockBird"
                         className="input-box"
-                        // onChange={(e) =>setFullName(e.target.value)}
+                        onChange={(e) =>setBookTitle(e.target.value)}
                         />
                     
                     </section>
@@ -39,11 +66,11 @@ function PostBook(){
                         Author
                         </label>
                         <input
-                        // value={}
+                        value={AuthorName}
                         type="text"
                         placeholder="e.g Harper Lee"
                         className="input-box"
-                        // onChange={(e) =>setFullName(e.target.value)}
+                        onChange={(e) =>setAuthorName(e.target.value)}
                         />
                     
                     </section>
@@ -89,8 +116,10 @@ function PostBook(){
 
                         <section className="recommend"><label className="label-input">Why does this book help?</label><span> 0/280</span></section>
                         <textarea
+                            value={recommend_text}
                             placeholder="Describe why this book work in your classroom.What do students take away from it"
                             className="input-recommend"
+                            onChange={(e)=>setrecommend_text(e.target.value)}
                             rows={4}
                         />
                     </section>
@@ -99,13 +128,12 @@ function PostBook(){
                      <section className="photo-input">
                         <label className="label-input">Book photo (optional)</label>
                         <input 
-
                             type="url"
-                            id="photoUrl"
+                            value={photoUrl_Google}
+                            id="photoUrl_"
                             placeholder="Paste an image Link(e.g from Google Boook)"
                             className="input-recommend-photo"
-                            // value={photoUrl}
-                            // onChange={(e) =>setPhotoUrl(e.target.value)}
+                             onChange={(e)=>setphotoUrl_Google(e.target.value)}
                         />
                     </section>
 
@@ -113,7 +141,7 @@ function PostBook(){
 
                     </form>
                    
-                     <button className="submit-for-review"   type="button">Submit for review</button>
+                     <button   onClick={PostBook_Teacher}   className="submit-for-review"   type="button">Submit for review</button>
                 </section>
                
             </section>
@@ -121,8 +149,9 @@ function PostBook(){
                 <section className="preview-topic">
                     <h2 className="preview-h2-1">LIVE PREVIEW</h2>
                     <section className="preview-card">
-                        {/* <img src={} alt={title} className="book-photo" /> */}
-                        <span className="subject-badge">Subject</span>
+                     <span className="subject-badge">Subject</span>
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=628&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bookshelf" className="banner-photo" />
+                       
                         <p className="grade-level">Grade Level</p>
                         <h3 className="book-title">Book Title</h3>
                         <p className="author-name">Author Name</p>
