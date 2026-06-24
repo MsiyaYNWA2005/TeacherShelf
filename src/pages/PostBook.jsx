@@ -1,6 +1,7 @@
 import "../cssfiles/PostBook.css"
 import { db } from "../firebaseConnSetUp";
 import { collection, addDoc } from "firebase/firestore";
+import {Clock} from "lucide-react";
 
 import { useState } from "react";
 
@@ -24,12 +25,15 @@ function PostBook(){
         if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
             try{
                 await addDoc(collection(db ,"books"),{
-                    bookTitle:BookTitle,
-                    authorName:AuthorName,
-                    subject_teach:subject,
-                    grade_teach:grade,
-                    book_recommend:recommend_text,
-                    photo_url:photoUrl_Google,
+                    // teacherId: auth.currentUser.uid,
+                    bookTitle: BookTitle,
+                    author: AuthorName,
+                    subject: subject,
+                    gradeLevel: grade,
+                    reason: recommend_text,
+                    photoURL: photoUrl_Google,
+                    status: "pending",         
+                    createdAt: new Date(),
                 })
             alert("book saved successfully!");
             }
@@ -42,16 +46,7 @@ function PostBook(){
 
     
 
-    // const handleSubmit = (e) => {
-    // e.preventDefault()
-    // console.log('Submitted:', formData)
-
-    // // Reset form
-    // setFormData({
-    //     BookTitle:''
-    // })
-    // }
-
+ 
 
 
 
@@ -198,7 +193,13 @@ function PostBook(){
                        
                     </section>
                 </section>
-                 <p className="moderation-note">Reviewed by a moderator before going live.</p>
+                <section className="moderation-note-clock-section">
+                    <div className="logo-icon-clock">
+                            <Clock size={20} />
+                        </div>
+                <p className="moderation-note">Reviewed by a moderator before going live.</p>
+                </section>
+                
             </section>
         </section>
     )

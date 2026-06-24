@@ -196,7 +196,10 @@ html,body {
 }
 
 .label-input{
-    color: black;
+  color: black;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .checkbox-input{
