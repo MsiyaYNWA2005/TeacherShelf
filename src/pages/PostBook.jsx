@@ -6,30 +6,35 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
+
+
 function PostBook(){
 
-    const [photoUrl,setphotoUrl] = useState("");
+   
     const [BookTitle,setBookTitle] = useState("");
     const [AuthorName,setAuthorName] = useState("");
     const [photoUrl_Google,setphotoUrl_Google]  = useState("");
     const [recommend_text,setrecommend_text]  = useState("");
+    const [subject,setSubject] = useState("");
+    const [grade,setGrade] = useState("");
 
 
     async function PostBook_Teacher(){
-        if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
             try{
-                await addDoc(collection(db ,"books"),{
+                await addDoc(collection(db,"books"),{
                     bookTitle:BookTitle,
                     authorName:AuthorName,
+                    subject_teach:subject,
+                    grade_teach:grade,
                     book_recommend:recommend_text,
                     photo_url:photoUrl_Google,
-                })
+                });
                 
             }
             catch(error){
                 console.error("Error saving Book :", error);
                 alert("Failed to save book. Check the console.");
-            }
+            
         }
     }
 
@@ -81,8 +86,7 @@ function PostBook(){
                             <label htmlFor="subjects" className="label-input">
                              Subjects
                             </label>
-
-                            <select id="subjects" className="subjects_and_grades_options">
+                            <select id="subjects" className="subjects_and_grades_options"  value={subject} onChange={(e) =>setSubject(e.target.value)}>
                                 <option value="">Select subject</option>
                                 <option value="Home Language">Home Language</option>
                                 <option value="History">History</option>
@@ -102,7 +106,7 @@ function PostBook(){
                              Grade level
                             </label>
 
-                             <select id="subjects" className="subjects_and_grades_options">
+                             <select id="subjects" className="subjects_and_grades_options" value={grade} onChange={(e) =>setGrade(e.target.value)}>
                                 <option value="">Select grade</option>
                                 <option value="Grade 9">Grade 9</option>
                                 <option value="Grade 10">Grade 10</option>
@@ -149,29 +153,37 @@ function PostBook(){
                 <section className="preview-topic">
                     <h2 className="preview-h2-1">LIVE PREVIEW</h2>
                     <section className="preview-card">
-                     <span className="subject-badge">Subject</span>
+                        
+                        
                         <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=628&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bookshelf" className="banner-photo" />
-                       
-                        <p className="grade-level">Grade Level</p>
-                        <h3 className="book-title">Book Title</h3>
-                        <p className="author-name">Author Name</p>
-                        <blockquote className="reason-quote">“Your reason for recommending this book will appear here.”</blockquote>
-                        <section className="teacher-info">
-                        <section className="button_initials">
+                        <section className="subject-grade-section">
+                            <span className="subject-badge">Subject</span>
+                            <span className="grade-level">Grade Level</span>
+                        </section>
+                        <section className="Book_title_author">
+                            <h3 className="book-title">Book Title</h3>
+                            <p className="author-name">Author Name</p>
+                        </section>
+                        
+                        <section className="recommend-preview">
+                            <blockquote className="reason-quote">“Your reason for recommending this book will appear here.”</blockquote>
+                        </section>
+                        <section className="teacher-info-post">
+                        <section className="button_initials-post">
                             <button>
                             JS
                             </button>
                         </section>
                         
                        <section className="teacher-info-preview">
-                            <h2>Ms. Jane Smith</h2>
-
+                            <p className="teacher-name">Ms. Jane Smith</p>
                             <p>Your School</p>
                         </section>
                         </section>
-                        <p className="moderation-note">Reviewed by a moderator before going live.</p>
+                       
                     </section>
                 </section>
+                 <p className="moderation-note">Reviewed by a moderator before going live.</p>
             </section>
         </section>
     )

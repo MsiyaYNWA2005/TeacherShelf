@@ -155,13 +155,44 @@ html,body {
 
   margin-left: 40px;
 }
-.{
+
+
+
+.preview-card{
     overflow: hidden;
     width: 350px;
+    background-color:rgb(221, 206, 184);
+    border-radius: 5px;
+    border: 1px solid none ;
 }
 .banner-photo{
-    width: 350px;
+   width: 100%; 
+   object-fit: cover;
+   display: block; /
 }
+
+.subject-grade-section{
+    margin-left: 10px;
+    text-align: left;
+}
+
+.Book_title_author{
+    margin-left: 10px;
+}
+
+.recommend-preview{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+    border-left: 2px solid #964726;
+    padding-left: 10px;
+}
+
+.author-name{
+    font-style: italic;
+}
+
 
 .subject-badge{
     display: inline-block;
@@ -170,5 +201,60 @@ html,body {
     padding: 4px 10px;
     border-radius: 4px;
     font-size: 12px;
-    margin-bottom: 8px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.grade-level{
+    display: inline-block;
+    background-color: #2d2d2d;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.book-title{
+    color: black;
+}
+
+.teacher-info-post{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 16px 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-top: 1px solid black;
+}
+.button_initials-post button{
+   background-color: #793e1d;
+   color: white;
+   border: none;
+
+   float: left;
+
+   width: 40px;
+   height: 40px;
+
+   border-radius: 50%;
+
+   margin-left: 2px;
+   margin-top: 10px;
+}
+
+.teacher-info-preview{
+    align-items: flex-start;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.teacher-name{
+    color:black
 }
