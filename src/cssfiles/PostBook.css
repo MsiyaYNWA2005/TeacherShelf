@@ -1,0 +1,157 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgb(242, 237, 229);
+  min-height: 100%;
+  
+}
+
+.post-book-main-section{
+    display: flex;
+    flex-direction: row; 
+    min-height: 100vh;     
+    width: 100vw;
+    align-items: stretch; 
+    text-align: left;
+    background-color: rgb(242, 237, 229);; 
+}
+
+.preview-section,.post-section{
+  width: 100%;
+  flex: 1;     
+  padding: 20px;
+  display: block;
+}
+
+.topic-section{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.post-book-topic{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+
+
+
+.post-section{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 100px;
+}
+
+.subject-grade-section{
+    display: flex;
+    flex-direction: row; 
+    gap:20px;
+}
+
+.subjects-grades-section{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.input-box{
+  width: 350px;      
+  padding: 12px 30px;       
+  box-sizing: border-box;
+  background-color:rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: 1px solid #2B1B14;
+}
+
+.subjects_and_grades_options{
+    background-color: rgb(242, 237, 229);
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border: 0.5px solid #2B1B14;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+
+
+.subjects_and_grades_options:focus {
+  border: 2px solid #2B1B14;
+}
+
+.recommend{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.input-recommend{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-right: 170px;
+    padding-bottom: 50px;
+    outline: none;
+    border: 1px solid #2B1B14;
+    background-color: rgb(242, 237, 229);
+}
+
+.input-recommend:focus{
+    border: 2px solid #2B1B14;
+}
+
+.photo-input{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.input-recommend-photo{
+  width: 350px;      
+  padding: 12px 30px;       
+  box-sizing: border-box;
+  background-color:rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: 1px solid #2B1B14;
+}
+
+
+.submit-for-review{
+    background-color: #4e200d;
+    color: white;
+    outline: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 120px;
+    padding-left: 120px;
+    border-radius: 8px;
+    border: none;
+}
+
+.preview-section{
+   margin-top: 100px;
+}
+
+.preview-h2-1{
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.preview-section{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: rgb(242, 237, 229);
+  min-height: 100vh;
+
+  margin-left: 40px;
+}

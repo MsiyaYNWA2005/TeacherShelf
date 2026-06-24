@@ -185,17 +185,14 @@ async function addTeacher(){
 
                     <section className="form-group">
                         <label
-                         className="label-input">
-                        
+                        className="label-input">
+                        Email
                         </label>
                         <input type="text"
                         value={Email}
                         onChange={(e) =>setEmail(e.target.value)}
                         placeholder="janesmith@gmail.com"
                         className="input-box" />
-
-
-                         
                     </section>
 
 
