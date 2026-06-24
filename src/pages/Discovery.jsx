@@ -4,7 +4,14 @@ import "../cssfiles/Discovery.css"
 function Discovery(){
     return(
 
-         <div>Discovery page</div>
+        <section>
+        <section>
+        Discovey page
+        </section>
+
+        <section>Today its me and you</section>
+        </section>
+        
     )
    
 }
