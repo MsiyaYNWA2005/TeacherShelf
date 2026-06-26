@@ -135,6 +135,18 @@ function Moderation(){
                     <Check size={20} color="#047857"  />
                     <button className="Already-approve-button"> Approved</button>
                     </section>
+
+
+                    <section className="retract-button-section">
+                         <button 
+                         className="retract-button"
+                         onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
+                         >Retract
+                         </button>
+                    </section>
+
+
+
                    
                 </section>
                 </section>
@@ -258,8 +270,13 @@ function Moderation(){
                         <button className="Already-reject-button">Rejected</button>
                     </section>
 
-
-                    <button className="reinstate-button">Reinstate</button>
+                    <section className="reinstate-button-section">
+                         <button 
+                         className="reinstate-button"
+                         onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
+                         >Reinstate</button>
+                    </section>
+                   
                 </section>
                 </section>
                 )
