@@ -318,3 +318,12 @@ html,body{
     border-radius: 5px;
 }
 
+.reinstate-button{
+    color: #0f0d09;
+    outline: none;
+    background: none;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 12px;  
+    line-height: 16px;
+}

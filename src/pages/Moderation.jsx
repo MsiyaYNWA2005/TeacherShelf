@@ -252,11 +252,14 @@ function Moderation(){
                
 
                 <section className="buttons-approve-reject">
-                    {/* <button className="approve-button">Approve</button> */}
+                   
                     <section className="section-rejected-rejected">
                         <X size={20} color="#dc2626"  />
                         <button className="Already-reject-button">Rejected</button>
                     </section>
+
+
+                    <button className="reinstate-button">Reinstate</button>
                 </section>
                 </section>
                 )
