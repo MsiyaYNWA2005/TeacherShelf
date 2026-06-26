@@ -300,4 +300,21 @@ html,body{
     display: flex;
     flex-direction: row;
     gap:6px;
+    background-color: #2d8051;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    border-radius: 5px;
 }
+
+.section-pending-rejected-button{
+    display: flex;
+    flex-direction: row;
+    gap:6px;
+    background-color: #F6DAD5;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+

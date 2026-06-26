@@ -372,7 +372,7 @@ function  display_pending_books(){
                     
 
                     <section className="section-pending-approved-button">
-                    <Check size={20} color="#047857"  />
+                    <Check size={20} color="white"  />
                    
 
                     <button 
@@ -387,16 +387,13 @@ function  display_pending_books(){
                     </section>
 
             
-                     <section className="section-rejected-rejected">
+                    <section className="section-pending-rejected-button">
                         <X size={20} color="#dc2626"  />
 
                         <button 
                         className="reject-button"
                         onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejected" })}>
-                        
-                        
                         Rejected
-
                         </button>
                         
                     </section>
