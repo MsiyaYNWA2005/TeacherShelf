@@ -101,16 +101,50 @@ function Moderation(){
 
          if(array_pending.length == 0){
             <section className="section_pending_no_books">
-                <section>
+                <section className="pending-check">
                     <Check size={20} color="#8B5A0E" />
                 </section>
-                <section>
+                <section className="pending-headers">
                     <h2>Nothing here</h2>
                     <p>No rejected submissions yet.</p>
                 </section>
             </section>
          }
-        <section className="penging_books_main_section"></section>
+         else{
+            for(let i =0;i<array_pending.length;i++){
+                <section className="pending-books-section">
+                    <section className="subject-grade-date-section">
+                    <section>
+                        <p>{array_pending[i].Date}</p>
+                    </section>
+
+                    <section>
+                        <p>{array_pending[i].subject}</p>
+                        <p>{array_pending[i].grade}</p>
+                    </section>
+                </section>
+                <section className="book_title-author-reason">
+                    <h2>{array_pending[i].book_title}</h2>
+                    <p>{array_pending[i].author}</p>
+                    <p>{array_pending[i].reason_recommend}</p>
+                </section>
+
+                <section className="book-photo">
+                    <img 
+                    src={array_pending[i].photo_Url} 
+                    alt="Description of the image" 
+                    style={{ width: '350px', height: 'auto' }} 
+                    />
+                </section>
+
+                <section className="buttons-approve-reject">
+                    <button className="approve-button">Approve</button>
+                    <button className="reject-button">Rejected</button>
+                </section>
+                </section>
+                
+            }
+         }
     }
 
 
@@ -164,7 +198,7 @@ function Moderation(){
         <section className="state-section">
 
           <section className="pending-">
-            <button className="pending-button">Pending</button>
+            <button onClick={display_pending_book} className="pending-button">Pending</button>
             <span>({pendingCount})</span>
           </section>
 
