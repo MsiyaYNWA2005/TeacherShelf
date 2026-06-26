@@ -1,7 +1,7 @@
 import "../cssfiles/Moderation.css"
 import { User } from "lucide-react";
 import { db } from "../firebaseConnSetUp";
-import { collection,getDocs,query,where} from "firebase/firestore";
+import { collection,getDocs,query,where , updateDoc,doc} from "firebase/firestore";
 import {useEffect, useState } from "react";
 import { Check } from "lucide-react";
 
@@ -44,6 +44,7 @@ function Moderation(){
                 const data = snapshots.docs[i].data();
 
                 books.push({
+                    id: snapshots.docs[i].id, 
                     author:data.author,
                     book_title:data.bookTitle,
                     grade:data.gradeLevel,
@@ -161,6 +162,7 @@ function Moderation(){
                 const data = snapshots.docs[i].data();
 
                 books.push({
+                    id: snapshots.docs[i].id, 
                     author:data.author,
                     book_title:data.bookTitle,
                     grade:data.gradeLevel,
@@ -277,6 +279,7 @@ function Moderation(){
                 const data = snapshots.docs[i].data();
 
                 books.push({
+                    id: snapshots.docs[i].id, 
                     author:data.author,
                     book_title:data.bookTitle,
                     grade:data.gradeLevel,
@@ -359,7 +362,10 @@ function  display_pending_books(){
                
 
                 <section className="buttons-approve-reject">
-                    <button className="approve-button">Approve</button>
+                    <button 
+                    className="approve-button" 
+                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
+                    >Approve</button>
                     <button className="reject-button">Rejected</button>
                 </section>
                 </section>
