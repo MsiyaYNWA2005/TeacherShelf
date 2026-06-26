@@ -49,7 +49,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt
+                    Date : data.createdAt.toDate().toLocaleDateString(),
 
                 })
             }
@@ -63,7 +63,7 @@ function Moderation(){
 
 
 
-    
+
 
 
     function display_approved_book(){
@@ -150,7 +150,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt
+                    Date : data.createdAt.toDate().toLocaleDateString(),
 
                 })
             }
@@ -248,7 +248,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt
+                    Date : data.createdAt.toDate().toLocaleDateString(),
 
                 })
             }
