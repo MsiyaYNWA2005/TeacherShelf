@@ -4,6 +4,7 @@ import { db } from "../firebaseConnSetUp";
 import { collection,getDocs,query,where , updateDoc,doc} from "firebase/firestore";
 import {useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import {X} from "lucide-react";
 
 
 
@@ -130,8 +131,11 @@ function Moderation(){
                
 
                 <section className="buttons-approve-reject">
-                    <button className="approve-button">Approve</button>
-                    <button className="reject-button">Rejected</button>
+                   <section className="section-already-approved">
+                    <Check size={20} color="#047857"  />
+                    <button className="Already-approve-button"> Approved</button>
+                    </section>
+                   
                 </section>
                 </section>
                 )
@@ -248,8 +252,11 @@ function Moderation(){
                
 
                 <section className="buttons-approve-reject">
-                    <button className="approve-button">Approve</button>
-                    <button className="reject-button">Rejected</button>
+                    {/* <button className="approve-button">Approve</button> */}
+                    <section className="section-rejected-rejected">
+                        <X size={20} color="#dc2626"  />
+                        <button className="Already-reject-button">Rejected</button>
+                    </section>
                 </section>
                 </section>
                 )
@@ -362,15 +369,39 @@ function  display_pending_books(){
                
 
                 <section className="buttons-approve-reject">
+                    
+
+                    <section className="section-pending-approved-button">
+                    <Check size={20} color="#047857"  />
+                   
+
                     <button 
                     className="approve-button" 
                     onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
                     >Approve
-
+ 
+          
                     </button>
-                    <button 
-                    className="reject-button"
-                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejecteds" })}>Rejected</button>
+
+
+                    </section>
+
+            
+                     <section className="section-rejected-rejected">
+                        <X size={20} color="#dc2626"  />
+
+                        <button 
+                        className="reject-button"
+                        onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejected" })}>
+                        
+                        
+                        Rejected
+
+                        </button>
+                        
+                    </section>
+
+                    
                 </section>
                 </section>
                 )
