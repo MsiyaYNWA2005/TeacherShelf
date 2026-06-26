@@ -223,7 +223,9 @@ async function addTeacher(){
                         <AddSubjects className="subject_name" value="Accounting"  onClick={() =>Add_Subject("Accounting")}/>
                         <AddSubjects className="subject_name" value="Life Sciences (Biology)"  onClick={() =>Add_Subject("Life Sciences (Biology)")}/>
                         <AddSubjects className="subject_name" value="Geography" onClick={() =>Add_Subject("Geography")}/>
+                       
                         <AddSubjects className="subject_name" value="History" onClick={() =>Add_Subject("History")}/>
+                        <AddSubjects className="subject_name" value="Mathematical Literacy" onClick={() =>Add_Subject(" Mathematical Literacy")}/>
                         <AddSubjects className="subject_name" value="Agriculture" onClick={() =>Add_Subject("Agriculture")}/>
                         <AddSubjects className="subject_name" value="Business studies"  onClick={() =>Add_Subject("Business studies")}/>
                         <AddSubjects className="subject_name" value="Economics"  onClick={() =>Add_Subject("Economics")}/>

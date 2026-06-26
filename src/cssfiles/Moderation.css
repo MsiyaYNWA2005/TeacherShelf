@@ -114,6 +114,14 @@ html,body{
   flex-direction: row;
   gap: 15px;
   margin-top: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E0D9CC;
+}
+
+.active-tab {
+  border-bottom: 2px solid #8B4A24;
+  color: #2B1B14;
+  font-weight: 600;
 }
 
 .approved- button,
@@ -121,6 +129,13 @@ html,body{
 .pending-  button{
      margin-right: 10px;
      border: none;
+     color: #a18f74;
+}
+
+.approved- span,
+.rejected- span,
+.pending-  span{
+     color: #947954;
 }
 
 .books-section{
@@ -150,6 +165,7 @@ html,body{
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .book-photo img {
@@ -192,4 +208,32 @@ html,body{
 .reject-button{
   background-color: #F6DAD5;
   color: #8B2A1E;
+}
+
+.section-no-books{
+  margin-top: 50px;
+  text-align: center;
+  margin-right: 250px;
+}
+
+.book-subject{
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+}
+
+.book_title-author-reason p{
+  color:#968159;
+}
+
+.grade-level-books{
+  color: #0f0d09;
+}
+
+.Date-section p{
+  color: #0f0d09;
+}
+
+.Pending-button:hover , .Approved-button:hover  , .Rejected-button:hover{
+  color: black;
 }

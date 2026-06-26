@@ -17,6 +17,9 @@ function Moderation(){
     const [RejectedBooks,setRejectedBooks]   = useState([]);
     const [ApprovedBooks,setApprovedBooks]   = useState([]);
     const [selectedBookState,setSelectedBookState] = useState(null);
+    
+
+
 
 
     
@@ -83,29 +86,47 @@ function Moderation(){
                 const array_books=ApprovedBooks[i];
                 approved.push(
                     <section className="books-section"   key={i}>
+
+                    <section className="book-photo">
+                        <img 
+                        src={array_books.photo_Url} 
+                        alt="Description of the image" 
+                        />
+                    </section>
+
                     <section className="subject-grade-date-section">
-                    <section>
-                        <p>{array_books.Date}</p>
+
+                     <section className="book-info">
+
+                        <section className="book-subject-grade">
+                            <p className="book-subject"
+                            
+                            style={{
+                            backgroundColor: subjectColors[array_books.subject]?.bg || "#E5E5E5",
+                            color: subjectColors[array_books.subject]?.text || "#333",
+                            }}
+                            
+                            >{array_books.subject}</p>
+                            <p  className="grade-level-books">{array_books.grade}</p>
+                        </section>
+                        
+                         <section className="book_title-author-reason">
+                            <h2>{array_books.book_title}</h2>
+                            <p>{array_books.author}</p>
+                            <p>"{array_books.reason_recommend}"</p>
+                        </section>
                     </section>
 
-                    <section>
-                        <p>{array_books.subject}</p>
-                        <p>{array_books.grade}</p>
-                    </section>
-                </section>
-                <section className="book_title-author-reason">
-                    <h2>{array_books.book_title}</h2>
-                    <p>{array_books.author}</p>
-                    <p>{array_books.reason_recommend}</p>
-                </section>
 
-                <section className="book-photo">
-                    <img 
-                    src={array_books.photo_Url} 
-                    alt="Description of the image" 
-                    style={{ width: '350px', height: 'auto' }} 
-                    />
+                    <section className="Date-section">
+                        <p >{array_books.Date}</p>
+                    </section>
+
+                   
                 </section>
+               
+
+               
 
                 <section className="buttons-approve-reject">
                     <button className="approve-button">Approve</button>
@@ -167,14 +188,14 @@ function Moderation(){
          if(RejectedBooks.length == 0){
            return(
                 <section className="section-no-books">
-                <section className="books-check">
-                    <Check size={20} color="#8B5A0E" />
+                    <section className="books-check">
+                        <Check size={20} color="#8B5A0E" />
+                    </section>
+                    <section className="book-headers">
+                        <h2>Nothing here</h2>
+                        <p>No rejected submissions yet.</p>
+                    </section>
                 </section>
-                <section className="book-headers">
-                    <h2>Nothing here</h2>
-                    <p>No rejected submissions yet.</p>
-                </section>
-            </section>
            );
          }
             const rejected = [];
@@ -182,29 +203,47 @@ function Moderation(){
                 const array_books=RejectedBooks[i];
                 rejected.push(
                     <section className="books-section"   key={i}>
+
+                    <section className="book-photo">
+                        <img 
+                        src={array_books.photo_Url} 
+                        alt="Description of the image" 
+                        />
+                    </section>
+
                     <section className="subject-grade-date-section">
-                    <section>
-                        <p>{array_books.Date}</p>
+
+                     <section className="book-info">
+
+                        <section className="book-subject-grade">
+                            <p className="book-subject"
+                            
+                            style={{
+                            backgroundColor: subjectColors[array_books.subject]?.bg || "#E5E5E5",
+                            color: subjectColors[array_books.subject]?.text || "#333",
+                            }}
+                            
+                            >{array_books.subject}</p>
+                            <p  className="grade-level-books">{array_books.grade}</p>
+                        </section>
+                        
+                         <section className="book_title-author-reason">
+                            <h2>{array_books.book_title}</h2>
+                            <p>{array_books.author}</p>
+                            <p>"{array_books.reason_recommend}"</p>
+                        </section>
                     </section>
 
-                    <section>
-                        <p>{array_books.subject}</p>
-                        <p>{array_books.grade}</p>
-                    </section>
-                </section>
-                <section className="book_title-author-reason">
-                    <h2>{array_books.book_title}</h2>
-                    <p>{array_books.author}</p>
-                    <p>{array_books.reason_recommend}</p>
-                </section>
 
-                <section className="book-photo">
-                    <img 
-                    src={array_books.photo_Url} 
-                    alt="Description of the image" 
-                    style={{ width: '350px', height: 'auto' }} 
-                    />
+                    <section className="Date-section">
+                        <p >{array_books.Date}</p>
+                    </section>
+
+                   
                 </section>
+               
+
+               
 
                 <section className="buttons-approve-reject">
                     <button className="approve-button">Approve</button>
@@ -294,8 +333,11 @@ function  display_pending_books(){
                      <section className="book-info">
 
                         <section className="book-subject-grade">
-                            <p>{array_books.subject}</p>
-                            <p>{array_books.grade}</p>
+                            <p className="book-subject"  style={{
+                            backgroundColor: subjectColors[array_books.subject]?.bg || "#E5E5E5",
+                            color: subjectColors[array_books.subject]?.text || "#333",
+                            }}>{array_books.subject}</p>
+                            <p className="grade-level-books">{array_books.grade}</p>
                         </section>
                         
                          <section className="book_title-author-reason">
@@ -339,6 +381,32 @@ function  display_pending_books(){
         if(selectedBookState === "rejected"){
             return display_rejected_books();
         }
+    }
+
+    const subjectColors={
+        "English Literature": { bg: "#FEF3C6", text: "#92620A" },
+
+        "Mathematics": { bg: "#DBEAFE", text: "#1E40AF" },
+
+        "Biology": { bg: "#D1FAE5", text: "#065F46" },
+
+        "Physical Sciences": { bg: "#FCE7F3", text: "#9D174D" },
+
+        "Accounting": { bg: "#CCFBF1", text: "#115E59" },          
+
+        "Geography": { bg: "#ECE7C6", text: "#6B5B0A" },           
+
+        "History": { bg: "#FCE4D6", text: "#9C4221" },             
+
+        "Agriculture": { bg: "#D9F2D0", text: "#2F6B1F" },         
+
+        "Business Studies": { bg: "#E0DEFB", text: "#4338CA" },    
+
+        "Economics": { bg: "#FCEFC7", text: "#946C00" },           
+
+        "Mathematical Literacy": { bg: "#CFFAFE", text: "#0E7490" },
+       
+
     }
 
 
@@ -387,17 +455,23 @@ function  display_pending_books(){
         <section className="state-section">
 
           <section className="pending-">
-            <button onClick={ function() {setSelectedBookState("pending");}} className="pending-button">Pending</button>
+            <button onClick={ function() {setSelectedBookState("pending");}} 
+            className={selectedBookState==="pending" ?  "Pending-button active-tab" : "Pending-button"}>Pending</button>
             <span>({pendingCount})</span>
           </section>
-
+   
+         
           <section className="approved-">
-            <button onClick={ function() {setSelectedBookState("approved");}} className="pending-button">Approved</button>
+            <button onClick={ function() {setSelectedBookState("approved");}} 
+            className={selectedBookState==="approved" ?  "Approved-button active-tab" : "Approved-button"}>Approved</button>
             <span>({approvedCount})</span>
           </section>
 
+          
+        
           <section className="rejected-">
-            <button  onClick={ function() {setSelectedBookState("rejected");}} className="pending-button">Rejected</button>
+            <button  onClick={ function() {setSelectedBookState("rejected");}} 
+            className={selectedBookState==="rejected" ?  "Rejected-button active-tab" : "Rejected-button"}>Rejected</button>
             <span>({rejectedCount})</span>
           </section>
 
@@ -410,3 +484,6 @@ function  display_pending_books(){
 }
 
 export default Moderation;
+
+
+
