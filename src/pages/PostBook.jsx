@@ -149,7 +149,7 @@ function PostBook(){
 
 
                      <section className="photo-input">
-                        <section className="recommend" ><label className="label-input">Book photo</label> <span>(optional)</span></section>
+                        <section className="recommend" ><label className="label-input">Book photo</label> <span>(Google Url)</span></section>
                         <input 
                             type="url"
                             value={photoUrl_Google}

@@ -89,6 +89,17 @@ html,body{
   color: #8B5A0E;
 }
 
+.pending-h2-p h2{
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700; 
+}
+
+.pending-h2-p p  , .approved-h2-p p , .rejected-h2-p p{
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    
+}
+
 .approved-card {
   background-color: #DCEBD3;
   border: 2px solid #4C8C3D;
@@ -97,6 +108,11 @@ html,body{
 .approved-h2-p,
 .approved-h2-p h2 {
   color: #2E5E22;
+}
+
+.approved-h2-p h2{
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700; 
 }
 
 .rejected-card {
@@ -109,6 +125,11 @@ html,body{
   color: #8B2A1E;
 }
 
+.rejected-h2-p h2{
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700; 
+}
+
 .state-section{
   display: flex;
   flex-direction: row;
@@ -116,6 +137,8 @@ html,body{
   margin-top: 40px;
   position: relative;
   background-color: none;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
   border-bottom: 1px solid #E0D9CC;
 }
 

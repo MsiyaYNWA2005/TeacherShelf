@@ -21,13 +21,6 @@ function Moderation(){
     
 
 
-
-
-    
-
-
-
-
     //i useEffect becuase i want this to run when moderations runs
     
     useEffect ( function(){
@@ -44,6 +37,13 @@ function Moderation(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
 
+                const date = data.createdAt.toDate();
+
+                const formattedDate =
+                    String(date.getDate()).padStart(2, '0') + '-' +
+                    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+                    date.getFullYear();
+
                 books.push({
                     id: snapshots.docs[i].id, 
                     author:data.author,
@@ -52,7 +52,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt.toDate().toLocaleDateString(),
+                    Date : formattedDate,
 
                 })
             }
@@ -178,6 +178,13 @@ function Moderation(){
 
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
+                
+                const date = data.createdAt.toDate();
+
+                const formattedDate =
+                    String(date.getDate()).padStart(2, '0') + '-' +
+                    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+                    date.getFullYear();
 
                 books.push({
                     id: snapshots.docs[i].id, 
@@ -187,7 +194,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt.toDate().toLocaleDateString(),
+                    Date : formattedDate,
 
                 })
             }
@@ -307,6 +314,13 @@ function Moderation(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
 
+                const date = data.createdAt.toDate();
+
+                const formattedDate =
+                    String(date.getDate()).padStart(2, '0') + '-' +
+                    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+                    date.getFullYear();
+
                 books.push({
                     id: snapshots.docs[i].id, 
                     author:data.author,
@@ -315,7 +329,7 @@ function Moderation(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    Date : data.createdAt.toDate().toLocaleDateString(),
+                    Date : formattedDate,
 
                 })
             }
@@ -501,7 +515,7 @@ function  display_pending_books(){
             <section className="approved-card">
                <section className="approved-h2-p">
                  <h2>{approvedCount}</h2>
-                <p>Approved</p>
+                 <p>Approved</p>
                </section>
             </section>
             <section className="rejected-card">
