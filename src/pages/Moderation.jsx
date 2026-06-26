@@ -26,8 +26,6 @@ function Moderation(){
 
     //i useEffect becuase i want this to run when moderations runs
     
-
-
     useEffect ( function(){
         async function GetBooksApproved(){
 
@@ -125,8 +123,6 @@ function Moderation(){
 
 
 
-
-
     useEffect ( () =>{
         async function GetBooksRejected(){
 
@@ -176,7 +172,7 @@ function Moderation(){
                 </section>
                 <section className="book-headers">
                     <h2>Nothing here</h2>
-                    <p>No approved submissions yet.</p>
+                    <p>No rejected submissions yet.</p>
                 </section>
             </section>
            );
@@ -283,30 +279,42 @@ function  display_pending_books(){
             for(let i =0;i<PendingBooks.length;i++){
                 const array_books=PendingBooks[i];
                 pending.push(
+
                     <section className="books-section"   key={i}>
+
+                    <section className="book-photo">
+                        <img 
+                        src={array_books.photo_Url} 
+                        alt="Description of the image" 
+                        />
+                    </section>
+
                     <section className="subject-grade-date-section">
-                    <section>
-                        <p>{array_books.Date}</p>
+
+                     <section className="book-info">
+
+                        <section className="book-subject-grade">
+                            <p>{array_books.subject}</p>
+                            <p>{array_books.grade}</p>
+                        </section>
+                        
+                         <section className="book_title-author-reason">
+                            <h2>{array_books.book_title}</h2>
+                            <p>{array_books.author}</p>
+                            <p>"{array_books.reason_recommend}"</p>
+                        </section>
                     </section>
 
-                    <section>
-                        <p>{array_books.subject}</p>
-                        <p>{array_books.grade}</p>
-                    </section>
-                </section>
-                <section className="book_title-author-reason">
-                    <h2>{array_books.book_title}</h2>
-                    <p>{array_books.author}</p>
-                    <p>{array_books.reason_recommend}</p>
-                </section>
 
-                <section className="book-photo">
-                    <img 
-                    src={array_books.photo_Url} 
-                    alt="Description of the image" 
-                    style={{ width: '350px', height: 'auto' }} 
-                    />
+                    <section className="Date-section">
+                        <p >{array_books.Date}</p>
+                    </section>
+
+                   
                 </section>
+               
+
+               
 
                 <section className="buttons-approve-reject">
                     <button className="approve-button">Approve</button>

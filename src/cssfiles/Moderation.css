@@ -122,3 +122,74 @@ html,body{
      margin-right: 10px;
      border: none;
 }
+
+.books-section{
+  width: 70%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-color:  #FAF6EE;
+  padding-left: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  border: 1px solid  #E6DCCE;
+}
+
+.book-subject-grade{
+   display: flex;
+   flex-direction: row;
+   gap: 8px;
+}
+
+.book-info{
+    align-items: stretch; 
+    text-align: left;
+}
+
+.subject-grade-date-section{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.book-photo img {
+    float: left;
+    width: 79px;
+    height: 79px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.buttons-approve-reject{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    float: right;
+    margin-top: -80px;
+}
+
+.Date-section{
+  margin-right: 50px;
+}
+
+.approve-button, .reject-button{
+         padding-bottom: 12px;
+         padding-top: 12px;
+         padding-right: 15px;
+         padding-left: 15px;
+         border-radius: 5px;
+         outline: none;
+         border: none;
+         
+}
+
+.approve-button{
+  background-color: #2d8051;
+  color: white;
+}
+
+.reject-button{
+  background-color: #F6DAD5;
+  color: #8B2A1E;
+}
