@@ -114,21 +114,39 @@ html,body{
   flex-direction: row;
   gap: 15px;
   margin-top: 40px;
-  padding-bottom: 15px;
+  position: relative;
   border-bottom: 1px solid #E0D9CC;
 }
 
-.active-tab {
-  border-bottom: 2px solid #8B4A24;
-  color: #2B1B14;
-  font-weight: 600;
+
+
+.pending-,
+.approved-,
+.rejected- {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+
+.Pending-button.active-tab::after,
+.Approved-button.active-tab::after,
+.Rejected-button.active-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #8B4A24;
 }
 
 .approved- button,
 .rejected- button,
 .pending-  button{
      margin-right: 10px;
+    
      border: none;
+     padding-bottom: 15px;
      color: #a18f74;
 }
 
