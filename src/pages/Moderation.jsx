@@ -365,8 +365,12 @@ function  display_pending_books(){
                     <button 
                     className="approve-button" 
                     onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
-                    >Approve</button>
-                    <button className="reject-button">Rejected</button>
+                    >Approve
+
+                    </button>
+                    <button 
+                    className="reject-button"
+                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}>Rejected</button>
                 </section>
                 </section>
                 )
