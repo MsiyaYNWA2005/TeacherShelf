@@ -370,7 +370,7 @@ function  display_pending_books(){
                     </button>
                     <button 
                     className="reject-button"
-                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}>Rejected</button>
+                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejecteds" })}>Rejected</button>
                 </section>
                 </section>
                 )
