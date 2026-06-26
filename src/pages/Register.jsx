@@ -81,6 +81,16 @@ async function addTeacher(){
                     subjects:selectedSubject,
                     createdAt: new Date(),
                 });
+
+    
+           setFullName("");
+           setSchoolName("");
+           setEmail("");
+           setPassword("");
+           setConfirmPassword("");
+           setSelectedGrade(null);
+        
+
             alert("Student saved successfully!");
             }
             else{

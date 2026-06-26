@@ -35,6 +35,15 @@ function PostBook(){
                     status: "pending",         
                     createdAt: new Date(),
                 })
+
+            
+                setBookTitle("");
+                setAuthorName("");
+                setrecommend_text("");
+                setphotoUrl_Google("");
+                setSubject("");
+                setGrade("");
+
             alert("book saved successfully!");
             }
             catch(error){
