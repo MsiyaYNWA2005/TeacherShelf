@@ -3,6 +3,7 @@ import { User } from "lucide-react";
 import { db } from "../firebaseConnSetUp";
 import { collection,getDocs,query,where} from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Check } from "lucide-react";
 
 
 
@@ -65,6 +66,53 @@ function Moderation(){
         GetBooksRejected()
     },[]);
 
+    async function GetPendingBooks(){
+            const q = query(collection(db,"books"),
+                    where("status","==","pending")
+
+                );
+            const snapshots = await getDocs(q);
+
+            const books_pending=[];
+
+
+            for(let i =0;i<snapshots.size;i++){
+                const data = snapshots.docs[i].data();
+
+                books_pending.push({
+                    author:data.author,
+                    book_title:data.bookTitle,
+                    grade:data.gradeLevel,
+                    subject :data.subject,
+                    reason_recommend:data.reason,
+                    photo_Url:data.photoURL,
+                    Date : data.createdAt
+
+                })
+            }
+
+            return books_pending;
+
+    }
+
+    async function  display_pending_book(){
+
+         const array_pending= await GetPendingBooks();
+
+         if(array_pending.length == 0){
+            <section className="section_pending_no_books">
+                <section>
+                    <Check size={20} color="#8B5A0E" />
+                </section>
+                <section>
+                    <h2>Nothing here</h2>
+                    <p>No rejected submissions yet.</p>
+                </section>
+            </section>
+         }
+        <section className="penging_books_main_section"></section>
+    }
+
 
 
 
@@ -111,6 +159,25 @@ function Moderation(){
                     <p>Rejected</p>
                 </section>
             </section>
+        </section>
+
+        <section className="state-section">
+
+          <section className="pending-">
+            <button className="pending-button">Pending</button>
+            <span>({pendingCount})</span>
+          </section>
+
+          <section className="approved-">
+            <button className="pending-button">Approved</button>
+            <span>({approvedCount})</span>
+          </section>
+
+          <section className="rejected-">
+            <button className="pending-button">Rejected</button>
+            <span>({rejectedCount})</span>
+          </section>
+
         </section>
 
        </section>

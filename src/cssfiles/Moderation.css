@@ -108,3 +108,17 @@ html,body{
 .rejected-h2-p h2 {
   color: #8B2A1E;
 }
+
+.state-section{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.approved- button,
+.rejected- button,
+.pending-  button{
+     margin-right: 10px;
+     border: none;
+}
