@@ -318,7 +318,7 @@ html,body{
     border-radius: 5px;
 }
 
-.reinstate-button , .reinstate-button{
+.restore-button{
     color: #0f0d09;
     outline: none;
     background: none;
@@ -331,28 +331,45 @@ html,body{
     border-bottom: 1px solid black;
 }
 
-.reinstate-button-section{
+.retract-button{
+    color: #0f0d09;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;  
+    line-height: 16px;
+    text-decoration: underline; 
+    text-underline-offset: 3px;  
+    border-bottom: 1px solid black;
+}
+
+.restore-button-section{
   outline: none;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.reinstate-button-section{
+.retract-button-section{
   outline: none;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.reinstate-button:hover{
+
+
+.restore-button:hover{
   color: #2d8051;
   border-bottom: 1px solid #2d8051;
 }
 
-
-
 .retract-button:hover{
   color: #dc2626;
-  border: 1px solid #dc2626;
+  border-bottom: 1px solid #dc2626;
 }
+
+
+
+

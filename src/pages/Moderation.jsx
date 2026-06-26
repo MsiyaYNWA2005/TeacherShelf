@@ -140,10 +140,12 @@ function Moderation(){
                     <section className="retract-button-section">
                          <button 
                          className="retract-button"
-                         onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
-                         >Retract
-                         </button>
+                         onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejected" })}
+                         >Retract</button>
                     </section>
+
+
+                    
 
 
 
@@ -270,11 +272,11 @@ function Moderation(){
                         <button className="Already-reject-button">Rejected</button>
                     </section>
 
-                    <section className="reinstate-button-section">
+                    <section className="restore-button-section">
                          <button 
-                         className="reinstate-button"
+                         className="restore-button"
                          onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
-                         >Reinstate</button>
+                         >Restore</button>
                     </section>
                    
                 </section>
