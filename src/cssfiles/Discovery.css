@@ -1,0 +1,75 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgb(242, 237, 229);
+  min-height: 100%;
+}
+
+.Discovery-main-section{
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;     
+    width: 100vw;
+    align-items: stretch; 
+    text-align: left;
+    background-color: rgb(242, 237, 229);;
+}
+
+.For-teachers-p{
+    font-size: 12px;
+    line-height:16px; 
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    margin-bottom:20px;
+    text-transform: uppercase; 
+    letter-spacing:1.6px;
+    color: hsl(39, 14%, 60%); 
+}
+
+.Discovery-header{
+    background-color: #1F0700;
+    padding-top: 70px;
+    padding-left: 30px;
+}
+
+.hero-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    line-height: 1.1;       
+    max-width: 320px;      
+    color: #fbf8f3;        
+}
+
+.browse-quote{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: hsl(39, 14%, 60%); 
+}
+
+.Browse-Contributor-Buttons{
+    gap: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    flex-direction: row;
+    display: flex;
+    width: 100%;          
+    max-width: 440px;
+}
+
+.Browse-button , .Contributor-button{
+    flex: 1;
+    padding-bottom: 10px;
+    padding-top: 10px ;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    
+}
+
+.Contributor-button{
+    margin-left: 15px;
+    background-color:#ce5928;;
+    color:white;
+}
