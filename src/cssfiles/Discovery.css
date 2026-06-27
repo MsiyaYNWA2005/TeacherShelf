@@ -56,10 +56,10 @@ html,body {
     max-width: 440px;
 }
 
-.Browse-button , .Contributor-button{
+.Browse-button-section, .Contributor-button-section{
     flex: 1;
-    padding-bottom: 10px;
-    padding-top: 10px ;
+    padding-bottom: 7px;
+    padding-top: 7px ;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
@@ -68,8 +68,185 @@ html,body {
     
 }
 
+.Browse-button-section{
+    background-color: #fbf8f3;
+}
+
+.Browse-button {
+    margin-left: 15px;
+   
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .Contributor-button{
     margin-left: 15px;
-    background-color:#ce5928;;
     color:white;
+
+
+ 
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.Contributor-button-section{
+    display: flex;
+    flex-direction: row;
+    background-color:#ce5928;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.Contributor-button-section ArrowRight{
+   padding-left: 20px;
+}
+
+.insights-section{
+    float: right;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-bottom: 20px;
+    width: max-content;
+    margin-top :-90px;
+    margin-right: 80px;
+    border-top: 1px solid #eed1c8;
+    padding-top: 20px; 
+}
+
+.insights-h2{
+    color: #fbf8f3;  
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 1000; 
+}
+
+.insights-p{
+    color: hsl(39, 14%, 60%);
+    margin: 0;
+}
+
+.search_input_and_search{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #ede5d5;
+    border: 1px solid  #5a4b46;
+    flex-direction: row;
+
+    border-radius: 5px;
+
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 2;
+    padding-left: 10px;
+
+
+
+    
+}
+
+
+.search_input_and_search:focus{
+    outline:none;
+    border: 1px solid #8B4A24;
+}
+
+.subjects-grades_options-discovery:focus{
+    outline:none;
+    border: 1px solid #8B4A24;
+}
+
+.search-input{
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 15px;
+    color: #4a3e3d;
+}
+
+
+.search_input-grades{
+    display: flex;
+    flex-direction: row;
+    align-items: center;      
+    gap: 12px;                
+    width: 100%;
+   
+                 
+    max-width: 1220px;
+    margin-left: 20px; 
+    padding-left: 20px;         
+}
+
+.filters-section{
+    display: flex; 
+    flex-direction: column;
+    align-items: stretch; 
+    text-align: left;
+    background-color: rgb(242, 237, 229);
+    
+    border-bottom: 2px solid rgb(167, 143, 119);;;;;
+}
+
+.subjects-grades_options-discovery{
+    padding-top: 15px;
+    padding-bottom: 15px;
+   
+    border: 1px solid  #5a4b46;
+    
+    padding-bottom: 15px;
+    
+    background-color: #ede5d5;
+
+    border-radius: 5px;
+    margin-top: 20px;
+
+   
+    padding-left: 20px;
+    padding-right: 30px;
+
+}
+
+.button-filters{
+    margin-top: 20px;
+ 
+   padding-bottom: 25px;
+   margin-left: 35px; 
+}
+
+.subject_name-discovery{
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border:1px solid  #a07272a1;;
+    border-radius: 10px;
+    border: 1px solid rgb(24, 22, 20);;;
+    color:rgb(24, 22, 20);;
+    background-color: #dbd7cf;
+}
+
+.subject_name-discovery-all{
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border:1px solid  #a07272a1;;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(24, 22, 20);;
 }

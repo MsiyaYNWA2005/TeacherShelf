@@ -2,7 +2,19 @@ import "../cssfiles/Discovery.css"
 import { collection,getDocs,query} from "firebase/firestore";
 import { db } from "../firebaseConnSetUp";
 import {useEffect, useState } from "react";
+import {ArrowRight} from 'lucide-react';
+import { Search } from 'lucide-react';
 
+
+
+function AddSubjects({value,onClick,className}){
+    return(
+       <button type="button" 
+       className={className} 
+       onClick={onClick}>
+       {value}</button>
+    )
+}
 
 
 function Discovery(){
@@ -111,31 +123,85 @@ function Discovery(){
           </section>
 
           <section className="Browse-Contributor-Buttons">
-            <button className="Browse-button">Browse recommendations</button>
-            <button className="Contributor-button">Become a contributor</button>
+            
+
+            <section className="Browse-button-section">
+                <button className="Browse-button">Browse recommendations</button>
+            </section>
+             <section className="Contributor-button-section">
+                 
+                 <button className="Contributor-button">Become a contributor</button>
+                 <ArrowRight size={20} color="white" />
+             </section>
           </section>
 
           <section className="insights-section">
 
-          <section className="Books-insights">
-             <h2 className="insights-h2">{BooksCount}</h2>
-             <p  className="insights-p">Books shared</p>
-          </section>
+            <section className="Books-insights">
+                <h2 className="insights-h2">{BooksCount}</h2>
+                <p  className="insights-p">Books shared</p>
+            </section>
 
-          <section className="Teacher-insights">
-             <h2 className="insights-h2">{TeacherCount}</h2>
-             <p  className="insights-p">Books shared</p>
-          </section>
+            <section className="Teacher-insights">
+                <h2 className="insights-h2">{TeacherCount}</h2>
+                <p  className="insights-p">Teachers</p>
+            </section>
 
-          <section className="Subjects-insights">
-             <h2 className="insights-h2">{SubjectsCount()}</h2>
-             <p  className="insights-p">Books shared</p>
-          </section>
+            <section className="Subjects-insights">
+                <h2 className="insights-h2">{SubjectsCount}</h2>
+                <p  className="insights-p">Subjects</p>
+            </section>
            
           </section>
         </section>
+
+
+        <section className="filters-section">
+               <section className="search_input-grades">
+                 <section className="search_input_and_search">
+                     <Search  size={20} color="black"/>
+                     <input
+                        className="search-input"
+                        placeholder="Search by title ,author, or teacher"
+                     />
+                </section>
+
+                <section className="grades-options">
+                    <select id="subjects" className="subjects-grades_options-discovery">
+                    <option value="">All grades</option>
+                    <option value="Grade 9">Grade 9</option>
+                    <option value="Grade 10">Grade 10</option>
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                 </select>
+                 
+                </section>
         
+               </section>
+
+               <section className="button-filters">
+                       <AddSubjects className="subject_name-discovery-all" value="All subjects"/>
+                       <AddSubjects className="subject_name-discovery" value="Mathematics"/>
+                        
+                        <AddSubjects className="subject_name-discovery" value="Physical Science"/>
+                        <AddSubjects className="subject_name-discovery" value="Accounting"  />
+                        <AddSubjects className="subject_name-discovery" value="Life Sciences (Biology)" />
+                        <AddSubjects className="subject_name-discovery" value="Geography"/>
+                       
+                        <AddSubjects className="subject_name-discovery" value="History" />
+                        <AddSubjects className="subject_name-discovery" value="Mathematical Literacy"/>
+                        <AddSubjects className="subject_name-discovery" value="Agriculture" />
+                        <AddSubjects className="subject_name-discovery" value="Business studies" />
+                        <AddSubjects className="subject_name-discovery" value="Economics"/>
+               </section>
         </section>
+
+           
+
+
+        </section>
+        
+       
         
     )
    
