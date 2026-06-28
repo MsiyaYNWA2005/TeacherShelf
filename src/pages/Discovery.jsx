@@ -3,6 +3,8 @@ import { collection,getDocs,query} from "firebase/firestore";
 import { db } from "../firebaseConnSetUp";
 import {useEffect, useState } from "react";
 import {ArrowRight} from 'lucide-react';
+import { BookOpen } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Search } from 'lucide-react';
 
 
@@ -128,11 +130,11 @@ function Discovery(){
             <section className="Browse-button-section">
                 <button className="Browse-button">Browse recommendations</button>
             </section>
-             <section className="Contributor-button-section">
+            <section className="Contributor-button-section">
                  
                  <button className="Contributor-button">Become a contributor</button>
                  <ArrowRight size={20} color="white" />
-             </section>
+            </section>
           </section>
 
           <section className="insights-section">
@@ -174,7 +176,7 @@ function Discovery(){
                     <option value="Grade 11">Grade 11</option>
                     <option value="Grade 12">Grade 12</option>
                  </select>
-                 
+
                 </section>
         
                </section>
@@ -194,6 +196,43 @@ function Discovery(){
                         <AddSubjects className="subject_name-discovery" value="Business studies" />
                         <AddSubjects className="subject_name-discovery" value="Economics"/>
                </section>
+        </section>
+
+
+        <section className="Discovery-recommendation-books">
+
+        <section className="recommendations-count">
+            <p>"{"number"}" recommendations</p>
+         </section>
+
+        <section className="books-grid">
+                <section className="No-Books-section">
+                    <section className="logo-icon-discovery">
+                            <BookOpen size={20} />
+                    </section>
+                    <h2 className="no-books-filter-h2">No books match your filters</h2>
+                    <p className="no-books-filter-p">Try adjusting your search or subject selection.</p>
+                </section>
+        </section>
+       
+
+
+
+        </section>
+
+        <section className="discovery-bottom-section">
+            <section className="bottom-discovery-quotes">
+                <h2>Do you teach this?</h2>
+                <p>Share a book that works in your classroom.</p>
+            </section>
+            
+            <section className="Register-button-section">
+                 
+                 <Plus size={16} color="white" />
+                 <button className="Register-button">Become a contributor</button>
+                
+            
+            </section>
         </section>
 
            
