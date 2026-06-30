@@ -171,7 +171,7 @@ html,body {
 .banner-photo{
    width: 100%; 
    object-fit: cover;
-   display: block; /
+   display: block; 
 }
 
 .subject-grade-section{

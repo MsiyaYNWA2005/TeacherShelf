@@ -1,5 +1,5 @@
 import "../cssfiles/Discovery.css"
-import { collection,getDocs,query} from "firebase/firestore";
+import { collection,getDocs,query,where} from "firebase/firestore";
 import { db } from "../firebaseConnSetUp";
 import {useEffect, useState } from "react";
 import {ArrowRight} from 'lucide-react';
@@ -23,6 +23,8 @@ function Discovery(){
 
     const [TeacherCount,setTeacherCount]  = useState(0);
     const [SubjectsCount,setSubjectsCount] = useState(0);
+    const [approvedCount,setApprovedCount] = useState(0);
+    const [ApprovedBooks,setApprovedBooks]   = useState([]);
     const [BooksCount , setBooksCount]  = useState(0);
 
 
@@ -88,15 +90,151 @@ function Discovery(){
         },[])
 
 
+        useEffect ( function(){
+        async function GetBooksApproved(){
 
-    
+        const q = query(collection(db,"books"),
+                where("status" ,"==","approved")
 
-        
+            );
+        const snapshots = await getDocs(q);
+          const books=[];
 
-    
+
+            for(let i =0;i<snapshots.size;i++){
+                const data = snapshots.docs[i].data();
+
+               
+
+               
+
+                books.push({
+                    id: snapshots.docs[i].id, 
+                    author:data.author,
+                    book_title:data.bookTitle,
+                    grade:data.gradeLevel,
+                    subject :data.subject,
+                    reason_recommend:data.reason,
+                    photo_Url:data.photoURL,
+                    
+
+                })
+            }
+
+        setApprovedBooks(books);
+        setApprovedCount(snapshots.size);
+
+        }
+        GetBooksApproved()
+    },[]);
+
+
+
+
+
+
+    function display_books(){
+      if(ApprovedBooks.length == 0){
+           return(
+                <section className="No-Books-section">
+                    <section className="logo-icon-discovery">
+                            <BookOpen size={20} />
+                    </section>
+                    <h2 className="no-books-filter-h2">No books match your filters</h2>
+                    <p className="no-books-filter-p">Try adjusting your search or subject selection.</p>
+                </section>
+           );
+         }
+            const approved = [];
+            for(let i =0;i<ApprovedBooks.length;i++){
+                const array_books=ApprovedBooks[i];
+                approved.push(
+                    <section className="books-card"   key={i}>
+
+                    <section className="book-photo-discovery">
+                        <img 
+                        src={array_books.photo_Url} 
+                        alt="Description of the image" 
+                        />
+                    </section>
+
+                
+                    <section className="book-subject-grade-discovery">
+                                <p className="book-subject-discovery"
+                                
+                                style={{
+                                backgroundColor: subjectColors[array_books.subject]?.bg || "#E5E5E5",
+                                color: subjectColors[array_books.subject]?.text || "#333",
+                                }}
+                                
+                                >{array_books.subject}</p>
+                                <p  className="grade-level-books-discovery">{array_books.grade}</p>
+                    </section>
+                        
+                    <section className="book_title-author-discovery">
+                                <h2>{array_books.book_title}</h2>
+                                <p>{array_books.author}</p>
+                    </section>
+                       
+                    <section className="recommend-discovery-section">
+                         <p>"{array_books.reason_recommend}"</p>
+                    </section>
+
+                    <section className="teacher-info-post">
+                        <section className="button_initials-post">
+                            <button>
+                            JS
+                            </button>
+                        </section>
+                        
+                       <section className="teacher-info-preview">
+                            <p className="teacher-name">Ms. Jane Smith</p>
+                            <p>Your School</p>
+                        </section>
+                    </section>
+
+
+                </section>
+                )
+                
+            
+         }
+
+         return approved;
+    }
+
+
+    const subjectColors={
+        "English Literature": { bg: "#FEF3C6", text: "#92620A" },
+
+        "Mathematics": { bg: "#DBEAFE", text: "#1E40AF" },
+
+        "Biology": { bg: "#D1FAE5", text: "#065F46" },
+
+        "Physical Sciences": { bg: "#FCE7F3", text: "#9D174D" },
+
+        "Accounting": { bg: "#CCFBF1", text: "#115E59" },          
+
+        "Geography": { bg: "#ECE7C6", text: "#6B5B0A" },           
+
+        "History": { bg: "#FCE4D6", text: "#9C4221" },             
+
+        "Agriculture": { bg: "#D9F2D0", text: "#2F6B1F" },         
+
+        "Business Studies": { bg: "#E0DEFB", text: "#4338CA" },    
+
+        "Economics": { bg: "#FCEFC7", text: "#946C00" },           
+
+        "Mathematical Literacy": { bg: "#CFFAFE", text: "#0E7490" },
+       
+
+    }
+
 
 
     return(
+
+        
 
         <section className="Discovery-main-section">
 
@@ -202,22 +340,15 @@ function Discovery(){
         <section className="Discovery-recommendation-books">
 
         <section className="recommendations-count">
-            <p>"{"number"}" recommendations</p>
+            <p>{approvedCount} recommendations</p>
+
          </section>
 
-        <section className="books-grid">
-                <section className="No-Books-section">
-                    <section className="logo-icon-discovery">
-                            <BookOpen size={20} />
-                    </section>
-                    <h2 className="no-books-filter-h2">No books match your filters</h2>
-                    <p className="no-books-filter-p">Try adjusting your search or subject selection.</p>
-                </section>
+        <section className="books-grid-discovery">
+            {display_books()}
         </section>
-       
 
-
-
+        
         </section>
 
         <section className="discovery-bottom-section">
@@ -234,6 +365,8 @@ function Discovery(){
             
             </section>
         </section>
+
+
 
            
 

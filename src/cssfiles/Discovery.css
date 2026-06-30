@@ -264,11 +264,7 @@ html,body {
      border-bottom: 1px solid #d8d2c9;
 }
 
-.books-grid{
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px; */
-}
+
 
 .No-Books-section{
   margin-top: 40px;
@@ -312,7 +308,7 @@ html,body {
     font-family: "Libre Baskerville", Georgia, serif;
 }
 .recommendations-count , .no-books-filter-p , .bottom-discovery-quotes p{
-     color: #9e6b56;
+     color: #413a37;
 }
 
 
@@ -345,3 +341,65 @@ html,body {
     cursor: pointer;
     padding: 0;
 }
+
+.books-grid-discovery{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.books-card{
+    margin-top: 30px;
+    overflow: hidden;
+    width: 350px;
+    background-color:#fbf8f3;
+    border-radius: 5px;
+    border: 1px solid none ;
+}
+
+.book-photo-discovery img{
+    width: 100%;
+    height: 200px;
+    background-color: #ede5d5;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.book-subject-grade-discovery{
+    margin-left: 10px;
+    text-align: left;
+}
+
+.book-subject-discovery{
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.grade-level-books-discovery{
+    display: inline-block;
+    color: black;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size:14px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.book_title-author-discovery{
+     margin-left: 10px;
+}
+
+.recommend-discovery-section{
+    
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+    border-left: 2px solid #964726;
+    padding-left: 10px;
+}
+
