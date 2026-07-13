@@ -346,7 +346,6 @@ function Moderation(){
    
 function  display_pending_books(){
 
-    
          if(PendingBooks.length == 0){
            return(
                 <section className="section-no-books">

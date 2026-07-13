@@ -1,5 +1,5 @@
 import "../cssfiles/Discovery.css"
-import { collection,getDocs,query,where} from "firebase/firestore";
+import { collection,getDocs,or,query,where} from "firebase/firestore";
 import { db } from "../firebaseConnSetUp";
 import {useEffect, useState } from "react";
 import {ArrowRight} from 'lucide-react';
@@ -7,20 +7,6 @@ import { BookOpen } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
-
-
-// function AddSubjects({value,onClick,className}){
-//     return(
-//        <button type="button" 
-//        className={className} 
-//        onClick={onClick}>
-//        {value}</button>
-//     )
-// }
-
-
-
 
 
 function Discovery(){
@@ -32,6 +18,9 @@ function Discovery(){
     const [BooksCount , setBooksCount]  = useState(0);
     const [selectedSubjectState,setSelectedSubjectState] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [selectedGradeState,setSelectedGradeState] = useState(null);
+    const [selectedSearchFilter,setselectedSearchFilter] = useState(null);
+   
     
 
 
@@ -153,7 +142,100 @@ function Discovery(){
     },[selectedSubjectState]);
 
 
-   
+
+     useEffect ( function(){
+
+        async function GetBooksApproved_Grades(){
+
+        const q = selectedGradeState
+
+                    ? query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                            where("gradeLevel" ,"==",selectedGradeState))
+
+                    :query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                        );
+
+        const snapshots = await getDocs(q);
+          const books=[];
+
+
+            for(let i =0;i<snapshots.size;i++){
+                const data = snapshots.docs[i].data();
+
+                              
+
+                books.push({
+                    id: snapshots.docs[i].id, 
+                    author:data.author,
+                    book_title:data.bookTitle,
+                    grade:data.gradeLevel,
+                    subject :data.subject,
+                    reason_recommend:data.reason,
+                    photo_Url:data.photoURL,
+                    
+
+                })
+            }
+
+        setApprovedBooks(books);
+        setApprovedCount(snapshots.size);
+        setLoading(false);
+        }
+       GetBooksApproved_Grades();
+    },[selectedGradeState]);
+
+
+
+     useEffect ( function(){
+
+        async function GetBooksApproved_Search(){
+
+        const q =  selectedSearchFilter
+
+                    ? query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                            or(
+                                where("author","==",selectedSearchFilter),
+                                where("bookTitle" ,"==",selectedSearchFilter),
+                            )
+                        )
+
+                    :query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                        );
+
+        const snapshots = await getDocs(q);
+          const books=[];
+
+
+            for(let i =0;i<snapshots.size;i++){
+                const data = snapshots.docs[i].data();
+
+                              
+
+                books.push({
+                    id: snapshots.docs[i].id, 
+                    author:data.author,
+                    book_title:data.bookTitle,
+                    grade:data.gradeLevel,
+                    subject :data.subject,
+                    reason_recommend:data.reason,
+                    photo_Url:data.photoURL,
+                    
+
+                })
+            }
+
+        setApprovedBooks(books);
+        setApprovedCount(snapshots.size);
+        setLoading(false);
+        }
+        GetBooksApproved_Search();
+    },[selectedSearchFilter]);
+
+
 
     function display_books(){
             const approved = [];
@@ -214,13 +296,14 @@ function Discovery(){
          return approved;
     }
 
+
     function display_empty_books(){
 
         if(loading){
              return(
-        <section className="No-Books-section">
-            <p>Loading recommendations...</p>
-        </section>
+                <section className="No-Books-section">
+                    <p>Loading recommendations...</p>
+                </section>
         )
         }
        
@@ -337,8 +420,12 @@ function Discovery(){
 
                 onClick={ function(){ document.getElementById("Discovery-books").scrollIntoView({behavior:"smooth"})     }    }
                 
-                 className="Browse-button">Browse recommendations</button>
+                 className="Browse-button">Browse recommendations
+
+
+                 </button>
             </section>
+
             <section className="Contributor-button-section">
                  
                 <button
@@ -346,7 +433,8 @@ function Discovery(){
                 onClick={ function(){GoToRegister()}}
 
                 className="Contributor-button">Become a contributor</button>
-                 <ArrowRight size={20} color="white" />
+                <ArrowRight size={20} color="white" />
+
             </section>
           </section>
 
@@ -378,11 +466,24 @@ function Discovery(){
                      <input
                         className="search-input"
                         placeholder="Search by title ,author, or teacher"
+                        
+
+                          
+                        value={selectedSearchFilter}
+                        onChange={function(e){setselectedSearchFilter(e.target.value)}}
+
+
+
                      />
                 </section>
 
                 <section className="grades-options">
-                    <select id="subjects" className="subjects-grades_options-discovery">
+
+                    <select id="subjects" className="subjects-grades_options-discovery"
+                
+                    onChange={function(e) { setSelectedGradeState(e.target.value || null); }}
+
+                    >
                     <option value="">All grades</option>
                     <option value="Grade 9">Grade 9</option>
                     <option value="Grade 10">Grade 10</option>
@@ -563,12 +664,12 @@ function Discovery(){
         <section id="Discovery-books" className="Discovery-recommendation-books">
         
 
-        <section>
-            {display_empty_books()}
-        </section>
-
          <section   id="all-books-grid"  className="books-grid-discovery">
             {display_Active_Subject_Books()}
+        </section>
+
+         <section>
+            {display_empty_books()}
         </section>
 
        
@@ -577,6 +678,7 @@ function Discovery(){
         </section>
 
         <section className="discovery-bottom-section">
+
             <section className="bottom-discovery-quotes">
                 <h2>Do you teach this?</h2>
                 <p>Share a book that works in your classroom.</p>
@@ -589,14 +691,15 @@ function Discovery(){
                  
                  onClick={ function(){GoToRegister()}}
 
-                 className="Register-button">Register as a teacher</button>
+                 className="Register-button">Register as a teacher
+                    
+                 </button>
                 
             </section>
+
+          
+
         </section>
-
-
-
-           
 
 
         </section>

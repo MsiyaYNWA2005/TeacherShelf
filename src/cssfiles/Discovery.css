@@ -236,18 +236,15 @@ html,body {
     border: 1px solid #b2a797;
     color: #4a3e3d;
     position: relative;
-   
 }
 
-.subject_name-discovery.active-subject::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 10px;  /* match your padding-left so it doesn't go edge to edge */
-  right: 10px; /* match your padding-right */
-  height: 2px;
-  background-color: #8B4A24;
-  border-radius: 2px;
+.subject_name-discovery:hover{
+    border-color: #1F0700;
+}
+
+.subject_name-discovery:focus{
+    background-color: #1F0700;
+    color: white;
 }
 
 
@@ -308,13 +305,14 @@ html,body {
 
 .discovery-bottom-section{
     padding-top: 20px;
-    display: flex;
-    width: 100%;          
+    display: flex;     
+    flex-direction: row;    
     justify-content: space-between;
     margin-left: 50px;
     margin-bottom: 20px;
     padding-bottom: 20px;
     background-color: #F2EDE4;
+    text-align: left; 
 }
 
 .bottom-discovery-quotes h2{
@@ -323,9 +321,6 @@ html,body {
 .recommendations-count , .no-books-filter-p , .bottom-discovery-quotes p{
      color: #413a37;
 }
-
-
-
 
 .Register-button-section{
     display: flex;
@@ -340,13 +335,14 @@ html,body {
     margin-right: 190px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: -200px;
 }
+
+
 
 .Register-button{
     color:white;
 
-   line-height: 1;
+    line-height: 1;
  
     outline: none;
     background: none;
@@ -407,7 +403,6 @@ html,body {
 }
 
 .recommend-discovery-section{
-    
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 15px;

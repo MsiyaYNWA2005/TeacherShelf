@@ -152,6 +152,13 @@ html,body{
   background-color: none;
 }
 
+.book_title-author-reason p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 
 .Pending-button.active-tab::after,
 .Approved-button.active-tab::after,
