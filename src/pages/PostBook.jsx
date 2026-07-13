@@ -113,7 +113,7 @@ function PostBook(){
                                 <option value="Life science(Biology)">Life science(Biology)</option>
                                 <option value="Mathematics">Mathematics</option>
                                 <option value="Mathematics Literacy">Mathematics Literacy</option>
-                                <option value="Physical Sciences">Physical Sciences</option>
+                                <option value="Physical Sciences">Physical Science</option>
                                 <option value="Accounting">Accounting</option>
                                 <option value="Business Studies">Business Studies</option>
                                 <option value="Economics">Economics</option>

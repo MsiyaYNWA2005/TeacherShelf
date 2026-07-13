@@ -6,17 +6,21 @@ import {ArrowRight} from 'lucide-react';
 import { BookOpen } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function AddSubjects({value,onClick,className}){
-    return(
-       <button type="button" 
-       className={className} 
-       onClick={onClick}>
-       {value}</button>
-    )
-}
+// function AddSubjects({value,onClick,className}){
+//     return(
+//        <button type="button" 
+//        className={className} 
+//        onClick={onClick}>
+//        {value}</button>
+//     )
+// }
+
+
+
 
 
 function Discovery(){
@@ -26,6 +30,19 @@ function Discovery(){
     const [approvedCount,setApprovedCount] = useState(0);
     const [ApprovedBooks,setApprovedBooks]   = useState([]);
     const [BooksCount , setBooksCount]  = useState(0);
+    const [selectedSubjectState,setSelectedSubjectState] = useState(null);
+    const [loading, setLoading] = useState(true);
+    
+
+
+
+   const navigate = useNavigate();
+
+    function GoToRegister(){
+
+    navigate("/Register");
+    
+   }
 
 
 
@@ -91,12 +108,20 @@ function Discovery(){
 
 
         useEffect ( function(){
+
         async function GetBooksApproved(){
 
-        const q = query(collection(db,"books"),
-                where("status" ,"==","approved")
+        const q = selectedSubjectState
 
-            );
+
+                    ? query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                            where("subject" ,"==",selectedSubjectState))
+
+                    :query(collection(db,"books"),
+                            where("status" ,"==","approved"),
+                        );
+
         const snapshots = await getDocs(q);
           const books=[];
 
@@ -104,9 +129,7 @@ function Discovery(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
 
-               
-
-               
+                              
 
                 books.push({
                     id: snapshots.docs[i].id, 
@@ -123,28 +146,16 @@ function Discovery(){
 
         setApprovedBooks(books);
         setApprovedCount(snapshots.size);
+        setLoading(false);
 
         }
         GetBooksApproved()
-    },[]);
+    },[selectedSubjectState]);
 
 
-
-
-
+   
 
     function display_books(){
-      if(ApprovedBooks.length == 0){
-           return(
-                <section className="No-Books-section">
-                    <section className="logo-icon-discovery">
-                            <BookOpen size={20} />
-                    </section>
-                    <h2 className="no-books-filter-h2">No books match your filters</h2>
-                    <p className="no-books-filter-p">Try adjusting your search or subject selection.</p>
-                </section>
-           );
-         }
             const approved = [];
             for(let i =0;i<ApprovedBooks.length;i++){
                 const array_books=ApprovedBooks[i];
@@ -203,13 +214,69 @@ function Discovery(){
          return approved;
     }
 
+    function display_empty_books(){
+
+        if(loading){
+             return(
+        <section className="No-Books-section">
+            <p>Loading recommendations...</p>
+        </section>
+        )
+        }
+       
+
+        if(ApprovedBooks.length == 0){
+           return(
+                <section className="No-Books-section">
+                    <section className="logo-icon-discovery">
+                            <BookOpen size={20} />
+                    </section>
+                    <h2 className="no-books-filter-h2">No books match your filters</h2>
+                    <p className="no-books-filter-p">Try adjusting your search or subject selection.</p>
+                </section>
+           );
+         }
+    }
+
+    function display_Active_Subject_Books(){
+        if(selectedSubjectState === null){
+            return display_books();
+        }
+        else{
+            //return the filtered fetch
+            return display_books();
+        }
+    }
+
+    
+    function CountRecommendations(){
+        if(approvedCount < 2){
+            return(  
+            <section className="recommendations-count">
+                <p>{approvedCount} recommendation</p>
+            </section>
+            )
+          
+            
+        }
+        else{
+             
+            return(
+                <section className="recommendations-count">
+                <p>{approvedCount} recommendations</p>
+            </section>
+            )
+            
+        }
+    }
+
 
     const subjectColors={
-        "English Literature": { bg: "#FEF3C6", text: "#92620A" },
+        "Home Language": { bg: "#FEF3C6", text: "#92620A" },
 
         "Mathematics": { bg: "#DBEAFE", text: "#1E40AF" },
 
-        "Biology": { bg: "#D1FAE5", text: "#065F46" },
+        "Life science(Biology)": { bg: "#D1FAE5", text: "#065F46" },
 
         "Physical Sciences": { bg: "#FCE7F3", text: "#9D174D" },
 
@@ -266,11 +333,19 @@ function Discovery(){
             
 
             <section className="Browse-button-section">
-                <button className="Browse-button">Browse recommendations</button>
+                <button
+
+                onClick={ function(){ document.getElementById("Discovery-books").scrollIntoView({behavior:"smooth"})     }    }
+                
+                 className="Browse-button">Browse recommendations</button>
             </section>
             <section className="Contributor-button-section">
                  
-                 <button className="Contributor-button">Become a contributor</button>
+                <button
+
+                onClick={ function(){GoToRegister()}}
+
+                className="Contributor-button">Become a contributor</button>
                  <ArrowRight size={20} color="white" />
             </section>
           </section>
@@ -320,35 +395,185 @@ function Discovery(){
                </section>
 
                <section className="button-filters">
-                       <AddSubjects className="subject_name-discovery-all" value="All subjects"/>
-                       <AddSubjects className="subject_name-discovery" value="Mathematics"/>
-                        
-                        <AddSubjects className="subject_name-discovery" value="Physical Science"/>
-                        <AddSubjects className="subject_name-discovery" value="Accounting"  />
-                        <AddSubjects className="subject_name-discovery" value="Life Sciences (Biology)" />
-                        <AddSubjects className="subject_name-discovery" value="Geography"/>
+                       <button 
                        
-                        <AddSubjects className="subject_name-discovery" value="History" />
-                        <AddSubjects className="subject_name-discovery" value="Mathematical Literacy"/>
-                        <AddSubjects className="subject_name-discovery" value="Agriculture" />
-                        <AddSubjects className="subject_name-discovery" value="Business studies" />
-                        <AddSubjects className="subject_name-discovery" value="Economics"/>
+                        onClick={function(){
+                                setSelectedSubjectState(null)
+                            }}
+
+                        className={selectedSubjectState === null ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                        All subjects
+                       </button>
+
+                       <button 
+
+                        onClick={function(){
+                            setSelectedSubjectState("Mathematics")
+                        }}
+
+                        className={selectedSubjectState === "Mathematics" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+                        >
+
+                        Mathematics
+
+                       </button>
+
+
+                       <button
+                       
+                        onClick={function(){
+                            setSelectedSubjectState("Physical Science")
+                        }}
+
+                        className={selectedSubjectState === "Physical Science" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+                        >
+
+                       Physical Science
+
+                       </button>
+
+                       <button
+
+                       onClick={function(){
+                            setSelectedSubjectState("Accounting")
+                        }}
+
+                        
+                        className={selectedSubjectState === "Accounting" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+
+                        Accounting
+                       </button>
+
+
+                       <button
+
+                       onClick={function(){
+                            setSelectedSubjectState("Life Sciences (Biology)")
+                        }}
+
+                        className={selectedSubjectState === "Life Sciences (Biology)" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                        Life Sciences (Biology)
+
+                       </button>
+
+                       <button  
+
+                       onClick={function(){
+                            setSelectedSubjectState("Geography")
+                        }}
+
+                        className={selectedSubjectState === "Geography" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                          Geography
+                       </button>
+
+
+                       <button
+
+                       onClick={function(){
+                            setSelectedSubjectState("History")
+                        }}
+
+                        className={selectedSubjectState === "History" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                          History
+                       </button>
+
+                       <button  
+
+                       onClick={function(){
+                            setSelectedSubjectState("Mathematics Literacy")
+                        }}
+
+                        className={selectedSubjectState === "Mathematical Literacy" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                         Mathematical Literacy
+                       </button>
+
+                       <button 
+
+                       onClick={function(){
+                            setSelectedSubjectState("Agricultural science")
+                        }}
+
+                        className={selectedSubjectState === "Agricultural science" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                        Agricultural science
+                       </button>
+
+
+                       <button
+
+                       onClick={function(){
+                            setSelectedSubjectState("Business Studies")
+                        }}
+
+                        className={selectedSubjectState === "Business Studies" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                         Business Studies
+                       </button>
+
+                       <button 
+                       onClick={function(){
+                            setSelectedSubjectState("Economics")
+                        }}
+
+                        className={selectedSubjectState === "Economics" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                          Economics
+                       </button>
+
+
+                        <button 
+                       onClick={function(){
+                            setSelectedSubjectState("Home Language")
+                        }}
+
+                        className={selectedSubjectState === "Home Language" ? "subject_name-discovery active-subject" : "subject_name-discovery"}
+
+                        >
+                         Home Language
+                       </button>
+
+                       
+                       
                </section>
         </section>
 
 
-        <section className="Discovery-recommendation-books">
+        <section id="Discovery-books" className="Discovery-recommendation-books">
 
-        <section className="recommendations-count">
-            <p>{approvedCount} recommendations</p>
+       <section>
+        {CountRecommendations()}
+       </section>
 
-         </section>
+      
+        <section id="Discovery-books" className="Discovery-recommendation-books">
+        
 
-        <section className="books-grid-discovery">
-            {display_books()}
+        <section>
+            {display_empty_books()}
         </section>
 
-        
+         <section   id="all-books-grid"  className="books-grid-discovery">
+            {display_Active_Subject_Books()}
+        </section>
+
+       
+        </section>
+
         </section>
 
         <section className="discovery-bottom-section">
@@ -360,9 +585,12 @@ function Discovery(){
             <section className="Register-button-section">
                  
                  <Plus size={16} color="white" />
-                 <button className="Register-button">Become a contributor</button>
+                 <button 
+                 
+                 onClick={ function(){GoToRegister()}}
+
+                 className="Register-button">Register as a teacher</button>
                 
-            
             </section>
         </section>
 

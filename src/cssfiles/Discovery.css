@@ -231,13 +231,25 @@ html,body {
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
-    border:1px solid  #a07272a1;;
     border-radius: 10px;
     background-color: #ebe6dc;
     border: 1px solid #b2a797;
     color: #4a3e3d;
+    position: relative;
    
 }
+
+.subject_name-discovery.active-subject::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;  /* match your padding-left so it doesn't go edge to edge */
+  right: 10px; /* match your padding-right */
+  height: 2px;
+  background-color: #8B4A24;
+  border-radius: 2px;
+}
+
 
 .subject_name-discovery-all{
     padding-left: 10px;
@@ -295,13 +307,14 @@ html,body {
 
 
 .discovery-bottom-section{
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     width: 100%;          
     justify-content: space-between;
     margin-left: 50px;
     margin-bottom: 20px;
     padding-bottom: 20px;
+    background-color: #F2EDE4;
 }
 
 .bottom-discovery-quotes h2{
