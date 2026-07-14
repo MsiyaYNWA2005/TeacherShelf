@@ -110,10 +110,10 @@ function PostBook(){
                                 <option value="">Select subject</option>
                                 <option value="Home Language">Home Language</option>
                                 <option value="History">History</option>
-                                <option value="Life science(Biology)">Life science(Biology)</option>
+                                <option value="Life Sciences (Biology)">Life science(Biology)</option>
                                 <option value="Mathematics">Mathematics</option>
                                 <option value="Mathematics Literacy">Mathematics Literacy</option>
-                                <option value="Physical Sciences">Physical Science</option>
+                                <option value="Physical Science">Physical Science</option>
                                 <option value="Accounting">Accounting</option>
                                 <option value="Business Studies">Business Studies</option>
                                 <option value="Economics">Economics</option>
@@ -144,6 +144,8 @@ function PostBook(){
                             placeholder="Describe why this book work in your classroom.What do students take away from it"
                             className="input-recommend"
                             onChange={(e)=>setrecommend_text(e.target.value)}
+                            rows={4}
+                            maxLength={100}
                         />
                     </section>
 

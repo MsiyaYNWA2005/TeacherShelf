@@ -411,3 +411,12 @@ html,body {
     padding-left: 10px;
 }
 
+.recommend-discovery-section p{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 500px;
+}

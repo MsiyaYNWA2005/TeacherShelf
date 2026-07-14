@@ -1,5 +1,5 @@
 import "../cssfiles/Discovery.css"
-import { collection,getDocs,or,query,where} from "firebase/firestore";
+import { collection,getDocs,or,query,where,and} from "firebase/firestore";
 import { db } from "../firebaseConnSetUp";
 import {useEffect, useState } from "react";
 import {ArrowRight} from 'lucide-react';
@@ -19,7 +19,7 @@ function Discovery(){
     const [selectedSubjectState,setSelectedSubjectState] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedGradeState,setSelectedGradeState] = useState(null);
-    const [selectedSearchFilter,setselectedSearchFilter] = useState(null);
+    const [selectedSearchFilter,setSelectedSearchFilter] = useState("");
    
     
 
@@ -191,14 +191,17 @@ function Discovery(){
      useEffect ( function(){
 
         async function GetBooksApproved_Search(){
+        console.log("searching for:", selectedSearchFilter);
 
         const q =  selectedSearchFilter
 
                     ? query(collection(db,"books"),
-                            where("status" ,"==","approved"),
+                            and(
+                                 where("status" ,"==","approved"),
                             or(
                                 where("author","==",selectedSearchFilter),
-                                where("bookTitle" ,"==",selectedSearchFilter),
+                                where("bookTitle" ,"==",selectedSearchFilter)
+                             )
                             )
                         )
 
@@ -463,18 +466,17 @@ function Discovery(){
                <section className="search_input-grades">
                  <section className="search_input_and_search">
                      <Search  size={20} color="black"/>
+                     
+
                      <input
                         className="search-input"
                         placeholder="Search by title ,author, or teacher"
-                        
-
-                          
+                                                  
                         value={selectedSearchFilter}
-                        onChange={function(e){setselectedSearchFilter(e.target.value)}}
-
-
-
+                        onChange={function(e){setSelectedSearchFilter(e.target.value)}}
                      />
+
+                     
                 </section>
 
                 <section className="grades-options">
@@ -546,7 +548,8 @@ function Discovery(){
 
                         >
 
-                        Accounting
+                       Accounting
+
                        </button>
 
 
