@@ -191,7 +191,7 @@ function Discovery(){
      useEffect ( function(){
 
         async function GetBooksApproved_Search(){
-        console.log("searching for:", selectedSearchFilter);
+       
 
         const q =  selectedSearchFilter
 
