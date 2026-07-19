@@ -227,7 +227,6 @@ function Discovery(){
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
                     
-
                 })
             }
 

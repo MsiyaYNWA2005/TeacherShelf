@@ -4,8 +4,11 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
-import { db } from "../firebaseConnSetUp";
-import { collection, addDoc } from "firebase/firestore";
+import { db ,  auth } from "../firebaseConnSetUp";
+// import { collection, addDoc} from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -48,7 +51,7 @@ function AddSubjects({value,onClick,className}){
 function Register(){
 
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false); 
     const [selectedGrade,setSelectedGrade] = useState(null);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [FullName ,setFullName ]=useState("");
@@ -57,6 +60,7 @@ function Register(){
     const [password,setPassword]=useState("");
     const[Confirm_password,setConfirmPassword] = useState("");
     const [selectedSubject, setSelectedSubject] = useState([]);
+    const navigate = useNavigate();
 
 
 function Add_Subject(subject){
@@ -70,15 +74,30 @@ function Add_Subject(subject){
 
 
 async function addTeacher(){
-    if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""){
+    if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""  && Email.includes("@")){
         try{
             if(Confirm_password === password){
-                await addDoc(collection(db,"teachers"),{
+               
+                const clearEmail = Email.trim();
+                
+                console.log("Submitting Email:", `"${clearEmail}"`); 
+                console.log("Submitting Password:", password);
+
+                const userCredential = await createUserWithEmailAndPassword(auth,clearEmail, password);
+                const user = userCredential.user;
+                console.log("Success!", userCredential.user);
+
+               const teacher_uid = user.uid;
+
+               const teacherDocRef=  doc(db,"teachers",teacher_uid)
+
+                await setDoc(teacherDocRef,{
                     name: FullName,
                     school: SchoolName,
                     email:Email,
                     grade: selectedGrade,
                     subjects:selectedSubject,
+                    role: "teacher",
                     createdAt: new Date(),
                 });
 
@@ -89,9 +108,14 @@ async function addTeacher(){
            setPassword("");
            setConfirmPassword("");
            setSelectedGrade(null);
+
+
         
 
             alert("Student saved successfully!");
+
+            navigate("/");
+
             }
             else{
                 alert("Failed to save teacher. Check Password and Confirmation Password");
@@ -326,7 +350,7 @@ async function addTeacher(){
                             Create my profile
                     </button>
                       
-                    <section className="sign_link"><p className="already-sign">Already registered?  <Link to="/Login" className="Login-Link">Sign in</Link></p></section>
+                    <section className="sign_link"><p className="already-sign">Already registered?  <Link to="/Welcome" className="Login-Link">Sign in</Link></p></section>
                     </section>
 
 

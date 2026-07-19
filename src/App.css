@@ -74,17 +74,15 @@ html, body, #root {
 }
 
 .Register_Link{
-  list-style:none;
-  text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
-  color:black;
-  padding-right: 12px;
-  padding-left: 12px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #E8E1D3;
-  border-radius: 5px;
+   text-decoration: none;
+    background-color: #8B4A24;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.15s ease;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .Moderation_Link{
@@ -107,7 +105,7 @@ html, body, #root {
   background-color: rgb(242, 237, 229);
 }
 
-.PostBook_Link{
+.Sign_In{
   list-style:none;
   text-decoration: none;
   margin-left: 10px;
@@ -116,7 +114,7 @@ html, body, #root {
 
 
 
-.PostBook_Link button
+.Sign_In button
 {
   padding-bottom: 8px;
   padding-top: 8px;
@@ -149,6 +147,22 @@ html, body, #root {
   color: black;
 }
 
-.PostBook_Link button:hover{
+.Sign_In button:hover{
  background-color:  #664030;
+}
+.Sign_Out{
+     background: none;
+    border: 1px solid #8B4A24;
+    color: #8B4A24;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    margin-left: 10px;
+}
+
+.Sign_Out:hover{
+  background-color: #8B4A24;
+  color: white;
 }
