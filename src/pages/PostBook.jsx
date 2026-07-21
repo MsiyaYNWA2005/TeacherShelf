@@ -1,5 +1,5 @@
 import "../cssfiles/PostBook.css"
-import { db } from "../firebaseConnSetUp";
+import { db,auth } from "../firebaseConnSetUp";
 import { collection, addDoc } from "firebase/firestore";
 import {Clock} from "lucide-react";
 
@@ -25,7 +25,7 @@ function PostBook(){
         if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
             try{
                 await addDoc(collection(db ,"books"),{
-                    // teacherId: auth.currentUser.uid,
+                    teacherId: auth.currentUser.uid,
                     bookTitle: BookTitle,
                     author: AuthorName,
                     subject: subject,

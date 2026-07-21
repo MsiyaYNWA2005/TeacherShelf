@@ -7,6 +7,7 @@ import { BookOpen } from "lucide-react";
 import { Plus } from "lucide-react";
 import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import {  doc, getDoc } from "firebase/firestore";
 
 
 function Discovery(){
@@ -60,7 +61,7 @@ function Discovery(){
             const snapshots = await getDocs(q);
              
             setSubjectsCount(snapshots.size);
-         
+            console.log(BooksCount);
     
         }
         GetBooksCount()
@@ -80,6 +81,9 @@ function Discovery(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
                 
+                if (!data.subjects) continue; 
+
+
                 for(let j=0;j<data.subjects.length;j++){
                     allSubjects.add(data.subjects[j]);
                 }
@@ -118,6 +122,19 @@ function Discovery(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
 
+            let teacherName="Unknown Teacher";
+            let schoolName ="Your school"
+            
+            const studentUid = data.teacherId;
+            if (studentUid){
+                const studentsRefDoc= await getDoc(doc(db, "teachers", studentUid));
+
+                if(studentsRefDoc.exists()){
+                    teacherName=studentsRefDoc.data().name;
+                    schoolName = studentsRefDoc.data().school;
+                }
+            }
+
                               
 
                 books.push({
@@ -128,8 +145,8 @@ function Discovery(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    
-
+                    teacherName: teacherName,
+                    schoolName:schoolName
                 })
             }
 
@@ -163,7 +180,20 @@ function Discovery(){
 
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
+                
+                let teacherName="Unknown Teacher";
+                let schoolName ="Your school"
+                
+                const studentUid = data.teacherId;
+                if (studentUid){
+                    const studentsRefDoc= await getDoc(doc(db, "teachers", studentUid));
 
+                    if(studentsRefDoc.exists()){
+                        teacherName=studentsRefDoc.data().name;
+                        schoolName = studentsRefDoc.data().school;
+                    }
+                }
+               
                               
 
                 books.push({
@@ -174,7 +204,8 @@ function Discovery(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    
+                    teacherName: teacherName,    
+                    teacherSchool: schoolName
 
                 })
             }
@@ -216,6 +247,22 @@ function Discovery(){
             for(let i =0;i<snapshots.size;i++){
                 const data = snapshots.docs[i].data();
 
+            let teacherName="Unknown Teacher";
+            let schoolName ="Your school"
+            
+            const studentUid = data.teacherId;
+            if (studentUid){
+                const studentsRefDoc= await getDoc(doc(db, "teachers", studentUid));
+
+                if(studentsRefDoc.exists()){
+                    teacherName=studentsRefDoc.data().name;
+                    schoolName = studentsRefDoc.data().school;
+                }
+            }
+           
+
+     
+
                               
 
                 books.push({
@@ -226,7 +273,8 @@ function Discovery(){
                     subject :data.subject,
                     reason_recommend:data.reason,
                     photo_Url:data.photoURL,
-                    
+                    teacherName: teacherName,    
+                    teacherSchool: schoolName
                 })
             }
 
@@ -278,13 +326,13 @@ function Discovery(){
                     <section className="teacher-info-post">
                         <section className="button_initials-post">
                             <button>
-                            JS
+                            {getInitials(array_books.teacherName)}
                             </button>
                         </section>
                         
                        <section className="teacher-info-preview">
-                            <p className="teacher-name">Ms. Jane Smith</p>
-                            <p>Your School</p>
+                            <p className="teacher-name">{array_books.teacherName}</p>
+                            <p>{array_books.schoolName}</p>
                         </section>
                     </section>
 
@@ -355,6 +403,8 @@ function Discovery(){
         }
     }
 
+    
+
 
     const subjectColors={
         "Home Language": { bg: "#FEF3C6", text: "#92620A" },
@@ -379,6 +429,33 @@ function Discovery(){
 
         "Mathematical Literacy": { bg: "#CFFAFE", text: "#0E7490" },
        
+
+    }
+
+
+    function getInitials(fullname){
+
+
+        if(!fullname){
+           return "No name";
+        }
+
+        const titles = ["Ms.", "Mr.", "Dr.", "Mrs.", "Prof."];
+        const parts = fullname.split(" ");
+
+        const nameparts = parts.filter(function(part){
+                    return !titles.includes(part);
+                    });
+        
+
+      const initials=[];
+
+        for (let i = 0; i < nameparts.length; i++) {
+            initials.push(nameparts[i][0]);
+            console.log(initials);
+        }
+    
+        return initials.join("").slice(0, 2).toUpperCase();
 
     }
 

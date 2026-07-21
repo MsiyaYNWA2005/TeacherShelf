@@ -3,6 +3,10 @@ import { BookOpen } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "./firebaseConnSetUp";
 import { doc, getDoc } from "firebase/firestore";
+
+
+// add this temporarily at the top of your App function
+
 import "./App.css"
 
 import Discovery from "./pages/Discovery.jsx";
@@ -15,7 +19,11 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+
+
    const [user,setUser] =  useState(null);
+
+  
 
 
    useEffect(function()  {
@@ -61,7 +69,7 @@ function App() {
               
                 <section className="Navigation_Link">
                     <Link className="Discovery_Link"  to="/"><button>Discovery</button></Link>
-                    {!user &&  <Link className="Sign_In"  to="/Welcome"> <button>Sign</button></Link>}
+                    {!user &&  <Link className="Sign_In"  to="/Welcome"> <button>Sign in</button></Link>}
                     {/* {user && user.role === "teacher" && (<Link className="Register_Link"  to="/Register">Register</Link>)} */}
                     {user && user.role === "teacher" && (<Link className="Register_Link"  to="/PostBook">+ Share a Book</Link>)}
                     {  user && user.role === "moderator" &&   (<Link className="Moderation_Link"  to="/Moderation"><button>Moderation</button></Link>)}
