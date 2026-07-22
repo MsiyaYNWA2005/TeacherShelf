@@ -22,6 +22,19 @@ function PostBook(){
 
 
     async function PostBook_Teacher(){
+        
+        if(BookTitle==""){
+                alert("Please Enter the Title of the book")
+            }
+        if(AuthorName ==""){
+              alert("Please Enter Author's Name ");
+        }
+        if(photoUrl_Google==""){
+            alert("Please put the url of a photo, copy it from google 'copy image address' ");
+        }
+        if(recommend_text==""){
+             alert("Please write why yo love this book, or what went well after using it in your class");
+        }
         if(BookTitle != ""  && AuthorName != ""  && photoUrl_Google != ""  && recommend_text != ""){
             try{
                 await addDoc(collection(db ,"books"),{
@@ -52,13 +65,6 @@ function PostBook(){
             }
         }
     }
-
-    
-
- 
-
-
-
     return (
         <section className="post-book-main-section">
             <section className="post-section">

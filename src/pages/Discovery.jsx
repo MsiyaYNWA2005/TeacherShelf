@@ -60,7 +60,7 @@ function Discovery(){
                 );
             const snapshots = await getDocs(q);
              
-            setSubjectsCount(snapshots.size);
+            setBooksCount(snapshots.size);
             console.log(BooksCount);
     
         }
@@ -90,7 +90,7 @@ function Discovery(){
             }
 
              
-            setBooksCount(allSubjects.size);
+            setSubjectsCount(allSubjects.size);
          
     
         }
@@ -332,7 +332,7 @@ function Discovery(){
                         
                        <section className="teacher-info-preview">
                             <p className="teacher-name">{array_books.teacherName}</p>
-                            <p>{array_books.schoolName}</p>
+                            <p>{array_books.teacherSchool}</p>
                         </section>
                     </section>
 
@@ -451,8 +451,10 @@ function Discovery(){
       const initials=[];
 
         for (let i = 0; i < nameparts.length; i++) {
-            initials.push(nameparts[i][0]);
-            console.log(initials);
+            if(nameparts.length > 0){
+                 initials.push(nameparts[i][0]);
+            }
+           
         }
     
         return initials.join("").slice(0, 2).toUpperCase();
