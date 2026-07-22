@@ -74,18 +74,36 @@ function Add_Subject(subject){
 
 
 async function addTeacher(){
+    if(FullName == ""){
+        alert("Please Enter your full name");
+    }
+    if(SchoolName == ""){
+        alert("Please Enter you school name");
+    }
+    if(Email == ""){
+        alert("Please Enter your email, make sure its includes '@'");
+    }
+
+    if(password == ""){
+        alert("Please Enter your password");
+    }
+    if(Confirm_password == ""){
+        alert("Please Enter your confirmation password , make sure its the same as your password")
+    }
+    if(selectedGrade ==""){
+        alert("Please select a grade or grades that you are teaching");
+    }
     if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""  && Email.includes("@")){
         try{
             if(Confirm_password === password){
                
                 const clearEmail = Email.trim();
                 
-                console.log("Submitting Email:", `"${clearEmail}"`); 
-                console.log("Submitting Password:", password);
+               
 
-                const userCredential = await createUserWithEmailAndPassword(auth,clearEmail, password);
-                const user = userCredential.user;
-                console.log("Success!", userCredential.user);
+               const userCredential = await createUserWithEmailAndPassword(auth,clearEmail, password);
+               const user = userCredential.user;
+               
 
                const teacher_uid = user.uid;
 

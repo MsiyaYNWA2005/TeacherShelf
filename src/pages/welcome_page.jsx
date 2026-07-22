@@ -29,6 +29,11 @@ function Welcome_page(){
 
 
     async function moderator_sign_in(){
+         if(Email_Moderator =="")
+            alert("Please Enter your email,make sure it includes '@' ");
+        if(Password_Moderator == ""){
+            alert("Please Enter your password");
+        }
         if(Email_Moderator != "" && Password_Moderator != ""){
             try{
 
@@ -45,13 +50,18 @@ function Welcome_page(){
             }
             catch(error){
                   console.error("Error signing in as  a moderator :", error);
-                  alert("Failed to sign in. Check the console.");
+                  alert("Failed to sign in. wrong log in credentials");
             }
         }
     }
 
 
     async function teacher_sign_in(){
+        if(Email_Teacher =="")
+            alert("Please Enter your email,make sure it includes '@' ");
+        if(Password_Teacher == ""){
+            alert("Please Enter your password");
+        }
         if(Email_Teacher != "" && Password_Teacher != ""){
             try{
 
