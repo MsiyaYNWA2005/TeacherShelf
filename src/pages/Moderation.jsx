@@ -412,7 +412,9 @@ function  display_pending_books(){
 
                     <button 
                     className="approve-button" 
-                    onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "approved" })}
+                    onClick={() => 
+                    updateDoc(doc(db, "books", array_books.id), 
+                    { status: "approved" })}
                     >Approve
  
           
@@ -427,7 +429,9 @@ function  display_pending_books(){
 
                         <button 
                         className="reject-button"
-                        onClick={() => updateDoc(doc(db, "books", array_books.id), { status: "rejected" })}>
+                        onClick={() => 
+                        updateDoc(doc(db, "books", array_books.id), 
+                        { status: "rejected" })}>
                         Rejected
                         </button>
                         

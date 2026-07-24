@@ -60,6 +60,15 @@ function Register(){
     const [password,setPassword]=useState("");
     const[Confirm_password,setConfirmPassword] = useState("");
     const [selectedSubject, setSelectedSubject] = useState([]);
+    const [Error_FullName,setError_FullName]=useState("");
+    const[Error_Email,setEmail_Error]=useState("");
+    const [Error_Schoolname,setSchoolname_Error]=useState("");
+    const [Error_Subject,setSubject_Error]=useState("");
+    const[Error_password,setPassword_Error]=useState("");
+    const[Error_confirm,setConfirm_Error]=useState("");
+    const[Error_Grade,setGrade_Error]=useState("");
+    const[Error_,serError_]=useState("");
+
     const navigate = useNavigate();
 
 
@@ -72,26 +81,39 @@ function Add_Subject(subject){
     }
 }
 
+function ErrorFunction(value_error){
+    return(
+        <section>
+            <p className="value_error">{value_error}</p>
+        </section>
+    )
+}
+
+
 
 async function addTeacher(){
     if(FullName == ""){
-        alert("Please Enter your full name");
+        setError_FullName("Full name is required");
     }
     if(SchoolName == ""){
-        alert("Please Enter you school name");
+        setSchoolname_Error("Please Enter you school name");
     }
     if(Email == ""){
-        alert("Please Enter your email, make sure its includes '@'");
+        setEmail_Error("Email is required");
     }
 
     if(password == ""){
-        alert("Please Enter your password");
+        setPassword_Error("Password is required");
     }
     if(Confirm_password == ""){
-        alert("Please Enter your confirmation password , make sure its the same as your password")
+        setConfirm_Error("Confirmation password required");
     }
-    if(selectedGrade ==""){
-        alert("Please select a grade or grades that you are teaching");
+    if(!selectedGrade){
+        setGrade_Error("Please select a grade level");
+        
+    }
+    if(selectedSubject == ""){
+        setSubject_Error("Select subject you teach");
     }
     if(FullName !="" && SchoolName != "" && Email != ""  && password !="" && Confirm_password !="" && selectedGrade !=""  && Email.includes("@")){
         try{
@@ -136,7 +158,7 @@ async function addTeacher(){
 
             }
             else{
-                alert("Failed to save teacher. Check Password and Confirmation Password");
+                serError_("Passwords do not match");
             }
         
         }
@@ -230,8 +252,11 @@ async function addTeacher(){
                         placeholder="Ms. Jane Smith"
                         className="input-box"
                         onChange={(e) =>setFullName(e.target.value)}
+                        
                         />
-                    
+
+                        <section>{ErrorFunction(Error_FullName)}</section>
+                        
                     </section>
                     
 
@@ -244,7 +269,11 @@ async function addTeacher(){
                         value={Email}
                         onChange={(e) =>setEmail(e.target.value)}
                         placeholder="janesmith@gmail.com"
-                        className="input-box" />
+                        className="input-box" 
+                        />
+
+                        <section>{ErrorFunction(Error_Email)}</section>
+
                     </section>
 
 
@@ -258,8 +287,11 @@ async function addTeacher(){
                         value={SchoolName}
                         onChange={(e) =>setSchoolName(e.target.value)}
                         placeholder="WestBrook High School"
-                        className="input-box" />
-                       
+                        className="input-box" 
+                        />
+
+                        <section>{ErrorFunction(Error_Schoolname)}</section>
+
                         </section>
                         
                         
@@ -281,6 +313,8 @@ async function addTeacher(){
                         <AddSubjects className="subject_name" value="Agriculture" onClick={() =>Add_Subject("Agriculture")}/>
                         <AddSubjects className="subject_name" value="Business studies"  onClick={() =>Add_Subject("Business studies")}/>
                         <AddSubjects className="subject_name" value="Economics"  onClick={() =>Add_Subject("Economics")}/>
+
+                        <section>{ErrorFunction(Error_Subject)}</section>
                       
                         </section>
 
@@ -299,11 +333,11 @@ async function addTeacher(){
                     <GradeRadio id="grade_12" name="grade_level" value="Grade 12"   checked={selectedGrade === "Grade 12"} onChange={() => setSelectedGrade("Grade 12")}/>
                     
                     
-
+                 
                    </section>
                         
 
-
+                   <section>{ErrorFunction(Error_Grade)}</section>
                     </section>
 
                         
@@ -333,7 +367,9 @@ async function addTeacher(){
                                     
                                 </button>
                             </section>
-                            
+                    
+
+                    <section>{ErrorFunction(Error_password)}</section>
                     </section>
                             
 
@@ -357,12 +393,16 @@ async function addTeacher(){
                                     
                                 </button>
                             </section>
+
+
+                    <section>{ErrorFunction(Error_confirm)}</section>
                     </section>
                         
                     </form>
                     
                         
                     
+                    <section>{ErrorFunction(Error_)}</section>
 
                     <button type="button"  onClick={addTeacher}  id="submit_details" className="button_register_details">
                             Create my profile
