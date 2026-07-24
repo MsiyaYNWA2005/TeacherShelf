@@ -10,7 +10,8 @@ html,body {
     display: flex;
     flex-direction: column; 
     min-height: 100vh;     
-    width: 100vw;
+    /* width: 100vw; */
+    width: 100%;
     align-items: stretch; 
     text-align: left;
     background-color: rgb(242, 237, 229);;
@@ -34,9 +35,11 @@ html,body {
 
 .hero-title {
     font-family: "Playfair Display", Georgia, serif;
-    font-size: 48px;
+    /* font-size: 48px; */
+    font-size: clamp(2rem, 6vw, 3rem);
+    max-width: 600px;
     line-height: 1.1;       
-    max-width: 320px;      
+    /* max-width: 320px;       */
     color: #fbf8f3;        
 }
 
@@ -66,6 +69,16 @@ html,body {
     outline: none;
     border: none;
     
+}
+
+@media(max-width:600px){
+
+.Browse-Contributor-Buttons{
+
+    flex-direction:column;
+    max-width:100%;
+}
+
 }
 
 .Browse-button-section{
@@ -107,16 +120,26 @@ html,body {
 }
 
 .insights-section{
-    float: right;
+  
     display: flex;
+
+    float: right;
+    /* margin-top :-90px;
+    margin-right: 80px; */ 
+
     flex-direction: row;
     gap: 20px;
     padding-bottom: 20px;
     width: max-content;
-    margin-top :-90px;
-    margin-right: 80px;
+    
     border-top: 1px solid #eed1c8;
     padding-top: 20px; 
+
+    
+    gap: 20px;
+    flex-wrap: wrap;
+    align-self: flex-end;
+    margin-top: 30px
 }
 
 .insights-h2{
@@ -178,12 +201,30 @@ html,body {
     align-items: center;      
     gap: 12px;                
     width: 100%;
+
+    flex-wrap:wrap;
+    margin:20px;
+    padding:0;
    
                  
     max-width: 1220px;
-    margin-left: 20px; 
-    padding-left: 20px;         
+    /* margin-left: 20px; 
+    padding-left: 20px;          */
+
+    padding-inline:20px;
 }
+
+@media (max-width:768px){
+
+    .search_input_and_search,
+    .subjects-grades_options-discovery{
+
+        width:100%;
+        max-width:none;
+    }
+
+}
+
 
 .filters-section{
     display: flex; 
@@ -315,6 +356,19 @@ html,body {
     text-align: left; 
 }
 
+
+@media(max-width:768px){
+
+.discovery-bottom-section{
+
+    flex-direction:column;
+    gap:20px;
+    margin:20px;
+}
+
+}
+
+
 .bottom-discovery-quotes h2{
     font-family: "Libre Baskerville", Georgia, serif;
 }
@@ -332,7 +386,7 @@ html,body {
     outline: none;
     border: none;
     gap: 15px;
-    margin-right: 190px;
+    margin-right: 0px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -352,15 +406,20 @@ html,body {
 }
 
 .books-grid-discovery{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 15px; */
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
 }
 
 .books-card{
     margin-top: 30px;
     overflow: hidden;
-    width: 350px;
+    /* width: 350px; */
+    width: 100%;
     background-color:#fbf8f3;
     border-radius: 5px;
     border: 1px solid none ;
@@ -368,11 +427,25 @@ html,body {
 
 .book-photo-discovery img{
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
     background-color: #ede5d5;
     border-radius: 6px;
     overflow: hidden;
 }
+
+
+.Discovery-header,
+.filters-section,
+.Discovery-recommendation-books{
+
+    padding-inline:clamp(1rem,4vw,2.5rem);
+
+}
+
+
 
 .book-subject-grade-discovery{
     margin-left: 10px;
@@ -419,4 +492,44 @@ html,body {
     -webkit-box-orient: vertical;
     overflow: hidden;
     max-width: 500px;
+}
+
+
+@media (max-width: 768px) {
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .Browse-Contributor-Buttons {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .search_input-grades {
+        flex-direction: column;
+        align-items: stretch;
+        margin: 20px;
+        padding: 0;
+    }
+
+    .books-grid-discovery {
+        grid-template-columns: 1fr;
+    }
+
+    .discovery-bottom-section {
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .insights-section {
+        margin: 20px 0 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        float: none;
+    }
+
+    .Register-button-section {
+        margin-right: 0;
+    }
 }

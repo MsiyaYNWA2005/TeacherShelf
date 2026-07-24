@@ -14,7 +14,7 @@ html, body, #root {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 1rem 2.5rem;
+  padding:1rem clamp(1rem,4vw,2.5rem);
   position:fixed;
   top:0;
   left: 0;
@@ -23,6 +23,7 @@ html, body, #root {
   text-decoration: none;
   width: 100%;
   z-index: 100;
+ 
   box-sizing: border-box;
 }
 
@@ -47,14 +48,16 @@ html, body, #root {
   text-decoration: none;
 
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 400;
   color: #2B1B14;
 }
 
 .logo-icon {
-  width: 42px;
-  height: 42px;
+ 
+
+  width: clamp(32px, 5vw, 42px);
+  height: clamp(32px, 5vw, 42px);
 
   background: #8B4A24;
   border-radius: 6px;
@@ -81,15 +84,15 @@ html, body, #root {
     border-radius: 6px;
     font-size: 14px;
     transition: background-color 0.15s ease;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
 }
 
 .Moderation_Link{
   list-style: none;
   text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
   color: #b88364;
 }
 
@@ -108,8 +111,8 @@ html, body, #root {
 .Sign_In{
   list-style:none;
   text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
 }
 
 
@@ -165,4 +168,74 @@ html, body, #root {
 .Sign_Out:hover{
   background-color: #8B4A24;
   color: white;
+}
+
+@media (max-width: 768px) {
+
+  .Navigation {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+  }
+
+  .Navigation_Link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+
+@media (max-width:768px){
+
+    .Discovery_Link button,
+    .Moderation_Link button,
+    .Sign_In button,
+    .Sign_Out,
+    .Register_Link{
+
+        padding:8px 16px;
+        font-size:14px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .page-content{
+        padding-top:140px;
+    }
+
+}
+.Navigation_Link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+@media (max-width:480px){
+
+    .Logo{
+        font-size:1.6rem;
+    }
+
+    .Navigation{
+        padding:0.8rem;
+    }
+
+    .Navigation_Link{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .Navigation_Link button,
+    .Sign_Out,
+    .Register_Link{
+        width:100%;
+    }
+
 }
