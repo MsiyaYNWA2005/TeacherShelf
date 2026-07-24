@@ -439,6 +439,7 @@ function  display_pending_books(){
 
                     
                 </section>
+                
                 </section>
                 )
                 

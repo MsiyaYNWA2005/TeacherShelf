@@ -510,3 +510,38 @@ html,body{
     }
 
 }
+
+@media (max-width: 768px){
+
+    .Welcome{
+        padding:90px 20px 30px;
+        justify-content:flex-start;
+    }
+
+    .welcome-header{
+        width:100%;
+        max-width:400px;
+        text-align:left;
+    }
+
+    .teacher-moderation-sign{
+        flex-direction:column;
+        width:100%;
+        max-width:400px;
+        align-items:stretch;
+    }
+
+    .role-card{
+        width:100%;
+        max-width:none;
+        padding:20px;
+    }
+
+    .password-welcome-class,
+    .input-box-welcome,
+    .sign-button{
+        width:100%;
+        max-width:400px;
+    }
+
+}
