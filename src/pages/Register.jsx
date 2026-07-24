@@ -81,13 +81,13 @@ function Add_Subject(subject){
     }
 }
 
-function ErrorFunction(value_error){
-    return(
-        <section>
-            <p className="value_error">{value_error}</p>
-        </section>
-    )
-}
+// function ErrorFunction(value_error){
+//     return(
+//         <section>
+//             <p className="value_error">{value_error}</p>
+//         </section>
+//     )
+// }
 
 
 
@@ -255,7 +255,8 @@ async function addTeacher(){
                         
                         />
 
-                        <section>{ErrorFunction(Error_FullName)}</section>
+                        {/* <section>{ErrorFunction(Error_FullName)}</section> */}
+                         <section>{(Error_FullName)}</section>
                         
                     </section>
                     
@@ -272,7 +273,8 @@ async function addTeacher(){
                         className="input-box" 
                         />
 
-                        <section>{ErrorFunction(Error_Email)}</section>
+                        {/* <section>{ErrorFunction(Error_Email)}</section> */}
+                        <section>{(Error_Email)}</section>
 
                     </section>
 
@@ -290,7 +292,9 @@ async function addTeacher(){
                         className="input-box" 
                         />
 
-                        <section>{ErrorFunction(Error_Schoolname)}</section>
+                        {/* <section>{ErrorFunction(Error_Schoolname)}</section> */}
+                         <section>{(Error_Schoolname)}</section>
+
 
                         </section>
                         
@@ -314,7 +318,9 @@ async function addTeacher(){
                         <AddSubjects className="subject_name" value="Business studies"  onClick={() =>Add_Subject("Business studies")}/>
                         <AddSubjects className="subject_name" value="Economics"  onClick={() =>Add_Subject("Economics")}/>
 
-                        <section>{ErrorFunction(Error_Subject)}</section>
+                        {/* <section>{ErrorFunction(Error_Subject)}</section> */}
+                        <section>{(Error_Subject)}</section>
+
                       
                         </section>
 
@@ -337,8 +343,11 @@ async function addTeacher(){
                    </section>
                         
 
-                   <section>{ErrorFunction(Error_Grade)}</section>
-                    </section>
+                   {/* <section>{ErrorFunction(Error_Grade)}</section> */}
+                    <section>{(Error_Grade)}</section>
+
+
+                   </section>
 
                         
                     <form className="form-section">
@@ -369,7 +378,11 @@ async function addTeacher(){
                             </section>
                     
 
-                    <section>{ErrorFunction(Error_password)}</section>
+                    {/* <section>{ErrorFunction(Error_password)}</section> */}
+                    <section>{(Error_password)}</section>
+
+
+                    
                     </section>
                             
 
@@ -395,14 +408,18 @@ async function addTeacher(){
                             </section>
 
 
-                    <section>{ErrorFunction(Error_confirm)}</section>
+                    {/* <section>{ErrorFunction(Error_confirm)}</section> */}
+                    <section>{(Error_confirm)}</section>
+
+
                     </section>
                         
                     </form>
                     
                         
                     
-                    <section>{ErrorFunction(Error_)}</section>
+                    {/* <section>{ErrorFunction(Error_)}</section> */}
+                     <section>{(Error_)}</section>
 
                     <button type="button"  onClick={addTeacher}  id="submit_details" className="button_register_details">
                             Create my profile
