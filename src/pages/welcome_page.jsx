@@ -24,15 +24,22 @@ function Welcome_page(){
     const [Password_Moderator,setPassword_Moderator]=useState("");
     const [showPassword_Moderator, setShowPassword_Moderator] = useState(false);
     const [showPassword_Teacher, setShowPassword_Teacher] = useState(false);
+    const [Error_Email,setEmail_Error]=useState("");
+    const [Error_Password,setPassword_Error]=useState("");
+    const [Error_Email_M,setEmail_Error_M]=useState("");
+    const [Error_Password_M,setPassword_Error_M]=useState("");
+    const [Error,setError]=useState("");
+
+  
 
     const navigate = useNavigate();
 
 
     async function moderator_sign_in(){
          if(Email_Moderator =="")
-            alert("Please Enter your email,make sure it includes '@' ");
+            setEmail_Error_M("Please Enter your email,make sure it includes '@' ");
         if(Password_Moderator == ""){
-            alert("Please Enter your password");
+            setPassword_Error_M("Please Enter your password");
         }
         if(Email_Moderator != "" && Password_Moderator != ""){
             try{
@@ -45,22 +52,30 @@ function Welcome_page(){
 
                      navigate("/");
                 }
+                else{
+                    setEmail_Error_M("Please write the correct email")
+                   
+                }
 
 
             }
             catch(error){
                   console.error("Error signing in as  a moderator :", error);
-                  alert("Failed to sign in. wrong log in credentials");
+                  setError("Incorrect email or password")
+                 
             }
         }
+        
     }
 
+   
 
     async function teacher_sign_in(){
         if(Email_Teacher =="")
-            alert("Please Enter your email,make sure it includes '@' ");
+            setEmail_Error("Please Enter your email,make sure it includes '@' ");
+         
         if(Password_Teacher == ""){
-            alert("Please Enter your password");
+            setPassword_Error("Please Enter your password");
         }
         if(Email_Teacher != "" && Password_Teacher != ""){
             try{
@@ -73,12 +88,16 @@ function Welcome_page(){
 
                      navigate("/");
                 }
+                else{
+                    setEmail_Error("Please write the correct email, you used to register with")
+                }
 
 
             }
             catch(error){
                   console.error("Error signing in as  a teacher :", error);
-                  alert("Failed to sign in. Check the console,or try registering");
+                  setError("Incorrect email or password")
+                 
             }
         }
     }
@@ -104,6 +123,10 @@ function Welcome_page(){
                       className="input-box-welcome"
                       onChange={(e) =>setEmail_Teacher(e.target.value)}
                     />
+
+                <section>{Error_Email}</section>
+                
+              
                 </section>
 
                 <section className="form-group-welcome">
@@ -133,11 +156,15 @@ function Welcome_page(){
                         </button>
                     </section>
                    
+
+                  
+                <section>{Error_Password}</section>
+
                 </section>
 
 
 
-
+            <section>{Error}</section>
             </form>
 
             <button className="sign-button"
@@ -185,6 +212,10 @@ function Welcome_page(){
                       className="input-box-welcome"
                       onChange={(e) =>setEmail_Moderator(e.target.value)}
                     />
+
+                <section>{Error_Email_M}</section>
+               
+
                 </section>
 
                 <section className="form-group-welcome">
@@ -214,11 +245,16 @@ function Welcome_page(){
                         </button>
 
                     </section>
+
+                     <section>{Error_Password_M}</section>
+                    
+
                 </section>
 
 
 
-
+            <section>{Error}</section>
+        
             </form>
 
             <button className="sign-button"
@@ -229,14 +265,20 @@ function Welcome_page(){
                 Sign In As Moderator
             </button>
 
+
+
+            
            
             </section>
            
 
           
 
-
+         
         )
+    
+        
+            
     }
 
 
@@ -244,6 +286,12 @@ function Welcome_page(){
         if (selectedRole === "teacher") return sign_details_teacher();
         if (selectedRole === "moderator") return sign_details_moderator();
     }
+
+//    async function clear_inputs(){
+//         setEmail_Error_M("");
+//         setPassword_Error_M("")
+//         setError("");
+//     }
    
 
 
@@ -290,6 +338,8 @@ function Welcome_page(){
         <section>
              {renderForm()} 
         </section>
+
+        
       
 
         </section>
