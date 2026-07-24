@@ -7,10 +7,22 @@ html,body{
     display: flex;
     flex-direction: column; 
     min-height: 100vh;     
-    width: 100vw; 
+    /* width: 100vw;  */
+    width:100%;
     background-color: rgb(242, 237, 229);
-    margin-left: 150px;
+    /* margin-left: 150px; */
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
     padding-top: 40px;
+}
+
+
+
+.moderator-header,
+.cards-states-section,
+.books-section{
+    width:100%;
 }
 
 
@@ -19,7 +31,7 @@ html,body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .review-submissions-p p{
@@ -59,15 +71,19 @@ html,body{
     flex-direction: row;
     gap:15px;
     margin-top: 50px;
-    width: 70%;
+    flex-wrap:wrap;
+    /* width: 70%; */
 }
+
+
+
 
 .cards-states-section {
   display: flex;
   flex-direction: row;
   gap: 15px;
   margin-top: 50px;
-  width: 70%;
+  /* width: 70%; */
 }
 
 .pending-card,
@@ -77,6 +93,12 @@ html,body{
   padding: 16px 20px;
   text-align: left;
   border-radius: 3px;
+}
+
+.pending-card,
+.approved-card,
+.rejected-card{
+    flex:1 1 250px;
 }
 
 .pending-card {
@@ -196,7 +218,7 @@ html,body{
 }
 
 .books-section{
-  width: 70%;
+  /* width: 70%; */
   margin-top: 30px;
   margin-bottom: 10px;
   background-color:  #FAF6EE;
@@ -205,6 +227,12 @@ html,body{
   padding-bottom: 20px;
   padding-right: 15px;
   border: 1px solid  #E6DCCE;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .book-subject-grade{
@@ -226,20 +254,30 @@ html,body{
 }
 
 .book-photo img {
-    float: left;
-    width: 79px;
-    height: 79px;
+    /* float: left; */
+    
+    
     border-radius: 4px;
     object-fit: cover;
     margin-right: 15px;
+
+
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .buttons-approve-reject{
     display: flex;
     flex-direction: column;
     gap:10px;
-    float: right;
-    margin-top: -70px;
+    /* float: right;
+    margin-top: -70px; */
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
 .Date-section{
@@ -406,3 +444,69 @@ html,body{
 
 
 
+@media (max-width:768px){
+
+    .Moderation-main-section{
+        margin:20px auto;
+        padding:0 15px;
+    }
+
+    .moderator-header{
+        flex-direction:column;
+        align-items:flex-start;
+        width:100%;
+    }
+
+    .cards-states-section{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .state-section{
+        flex-wrap:wrap;
+    }
+
+    .books-section{
+        width:100%;
+    }
+
+    .subject-grade-date-section{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .buttons-approve-reject{
+        margin-top:15px;
+        float:none;
+    }
+
+    .book-photo img{
+        width:100%;
+        max-width:120px;
+        height:auto;
+        float:none;
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .books-section{
+        flex-direction:column;
+    }
+
+    .book-details{
+        flex-direction:column;
+    }
+
+    .buttons-approve-reject{
+        width:100%;
+    }
+
+    .section-pending-approved-button,
+    .section-pending-rejected-button{
+        width:100%;
+    }
+
+}
