@@ -290,3 +290,21 @@ html,body {
 .subjects h2 , .grade-levels h2{
     font-size: 15px;
 }
+
+@media (max-width:768px){
+
+    .Register{
+        flex-direction: column;
+        margin-left: 0;
+        padding: 90px 20px 30px;
+    }
+    .Register_section{
+        margin-left: 0;
+        padding: 90px 20px 30px;
+    }
+    .Teacher_shelf{
+        min-height: auto;
+        padding: 40px 20px;
+    }
+
+}
