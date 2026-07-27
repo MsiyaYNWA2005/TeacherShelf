@@ -460,8 +460,10 @@ html,body{
     }
 
     .cards-states-section{
-        flex-direction:column;
+        flex-direction:row;
         width:100%;
+        padding: 20px 20px 30px;
+        gap:10px;
     }
 
     .state-section{
