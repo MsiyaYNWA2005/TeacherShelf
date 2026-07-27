@@ -217,7 +217,7 @@
     }
 
     .teacher-moderation-sign{
-        flex-direction:column;
+        flex-direction:row;
         width:100%;
     }
 
