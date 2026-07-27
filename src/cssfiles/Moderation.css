@@ -480,8 +480,12 @@ html,body{
     }
 
     .buttons-approve-reject{
+        display: flex;
+        flex-direction: column;
         margin-top:15px;
         float:none;
+        align-items: left;
+        text-align: left;
     }
 
     .book-photo img{

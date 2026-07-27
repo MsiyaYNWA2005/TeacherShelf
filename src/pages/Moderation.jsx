@@ -131,6 +131,7 @@ function Moderation(){
                
 
                 <section className="buttons-approve-reject">
+                
                    <section className="section-already-approved">
                     <Check size={20} color="#047857"  />
                     <button className="Already-approve-button"> Approved</button>
